@@ -1,0 +1,272 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\DataLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\DataLayer.csproj",
+        "projectName": "DataLayer",
+        "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\vikky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vikky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj": {
+                "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj",
+        "projectName": "DomainLogic",
+        "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj",
+        "packagesPath": "C:\\Users\\vikky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vikky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
+        "projectName": "PresentationLayer",
+        "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
+        "packagesPath": "C:\\Users\\vikky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\vikky\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\DataLayer.csproj"
+              },
+              "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj": {
+                "projectPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\DomainLogic.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.SignalR": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.27.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

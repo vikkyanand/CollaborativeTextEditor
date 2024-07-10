@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./CollaborativeTextEditor_backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Map host port 8080 to container port 8080
+    depends_on:
+      - mongo
+      - rabbitmq
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__MongoDb=mongodb://mongo:27017
+      - RabbitMq__HostName=rabbitmq
+    networks:
+      - collaborative_network
+
+  frontend:
+    build:
+      context: ./CollaborativeTextEditor_frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - collaborative_network
+    environment:
+      - REACT_APP_API_URL=http://backend:8080/api
+      - REACT_APP_WEBSOCKET_URL=ws://backend:8080/ws
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - collaborative_network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - collaborative_network
+
+volumes:
+  mongo-data:
+
+networks:
+  collaborative_network:
