@@ -21,7 +21,12 @@ RUN npm run build
 
 # Use a minimal Node.js image to serve the application
 FROM nginx:alpine
+
+# Copy the build output
 COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy the custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port
 EXPOSE 80
