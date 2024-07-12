@@ -25,7 +25,7 @@ jobs:
       - name: Build backend Docker image
         run: |
           echo "Building backend Docker image"
-          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_backend:latest ./CollaborativeTextEditor_backend --progress plain
+          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_backend:latest ./CollaborativeTextEditor_backend --progress plain --load
           docker images
 
       - name: Push backend Docker image
@@ -52,7 +52,7 @@ jobs:
       - name: Build frontend Docker image
         run: |
           echo "Building frontend Docker image"
-          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_frontend:latest ./CollaborativeTextEditor_frontend --progress plain
+          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_frontend:latest ./CollaborativeTextEditor_frontend --progress plain --load
           docker images
 
       - name: Push frontend Docker image
