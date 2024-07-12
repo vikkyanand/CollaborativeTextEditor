@@ -50,15 +50,30 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push backend Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/collaborative_backend:latest ./CollaborativeTextEditor_backend
-          docker push ${{ secrets.DOCKER_USERNAME }}/collaborative_backend:latest
+        uses: docker/build-push-action@v2
+        with:
+          context: ./CollaborativeTextEditor_backend
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/collaborative_backend:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
 
       - name: Build and push frontend Docker image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/collaborative_frontend:latest ./CollaborativeTextEditor_frontend
-          docker push ${{ secrets.DOCKER_USERNAME }}/collaborative_frontend:latest
+        uses: docker/build-push-action@v2
+        with:
+          context: ./CollaborativeTextEditor_frontend
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/collaborative_frontend:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
 
-      - name: Deploy to Docker Compose
+      - name: Deploy
         run: |
-          docker-compose -f docker-compose.yml -p collaborativetexteditor1 up -d
+          echo "Add your deployment commands here"
+          # For example, if deploying to a remote server:
+          # ssh user@your-server.com "docker-compose -f /path/to/docker-compose.yml pull && docker-compose -f /path/to/docker-compose.yml up -d"
+
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache

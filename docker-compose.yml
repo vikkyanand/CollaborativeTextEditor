@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   backend:
+    container_name: cte_backend
     build:
       context: ./CollaborativeTextEditor_backend
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"  # Map host port 8080 to container port 8080
+      - "8080:8080"
     depends_on:
       - mongo
       - rabbitmq
@@ -18,6 +19,7 @@ services:
       - collaborative_network
 
   frontend:
+    container_name: cte_frontend
     build:
       context: ./CollaborativeTextEditor_frontend
       dockerfile: Dockerfile
@@ -32,6 +34,7 @@ services:
       - REACT_APP_WEBSOCKET_URL=ws://backend:8080/ws
 
   mongo:
+    container_name: cte_mongo
     image: mongo:latest
     ports:
       - "27017:27017"
@@ -41,6 +44,7 @@ services:
       - collaborative_network
 
   rabbitmq:
+    container_name: cte_rabbitmq
     image: rabbitmq:3-management
     ports:
       - "5672:5672"
