@@ -14,14 +14,15 @@ jobs:
 
     services:
       mongo:
-        image: mongo:latest
+        image: mongo:4.4
         ports:
           - 27017:27017
         options: >-
-          --health-cmd "mongo --eval 'db.runCommand(\"ping\").ok'" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=5
+          --health-cmd mongosh --eval "db.adminCommand('ping')"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+          --health-start-period 20s
       rabbitmq:
         image: rabbitmq:3-management
         ports:
@@ -31,6 +32,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Check MongoDB logs if startup fails
+        if: failure()
+        run: docker logs ${{ job.services.mongo.id }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -70,8 +75,6 @@ jobs:
       - name: Deploy
         run: |
           echo "Add your deployment commands here"
-          # For example, if deploying to a remote server:
-          # ssh user@your-server.com "docker-compose -f /path/to/docker-compose.yml pull && docker-compose -f /path/to/docker-compose.yml up -d"
 
       - name: Move cache
         run: |
