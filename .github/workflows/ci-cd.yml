@@ -22,13 +22,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push backend Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./CollaborativeTextEditor_backend
-          file: ./CollaborativeTextEditor_backend/Dockerfile
-          platforms: linux/amd64
-          tags: ${{ secrets.DOCKER_USERNAME }}/cte_backend:latest
+      - name: Build backend Docker image
+        run: |
+          echo "Building backend Docker image"
+          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_backend:latest ./CollaborativeTextEditor_backend --progress plain
+          docker images
+
+      - name: Push backend Docker image
+        run: |
+          echo "Pushing backend Docker image"
+          docker push ${{ secrets.DOCKER_USERNAME }}/cte_backend:latest
 
   build-and-push-frontend:
     runs-on: ubuntu-latest
@@ -46,13 +49,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push frontend Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./CollaborativeTextEditor_frontend
-          file: ./CollaborativeTextEditor_frontend/Dockerfile
-          platforms: linux/amd64
-          tags: ${{ secrets.DOCKER_USERNAME }}/cte_frontend:latest
+      - name: Build frontend Docker image
+        run: |
+          echo "Building frontend Docker image"
+          docker buildx build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/cte_frontend:latest ./CollaborativeTextEditor_frontend --progress plain
+          docker images
+
+      - name: Push frontend Docker image
+        run: |
+          echo "Pushing frontend Docker image"
+          docker push ${{ secrets.DOCKER_USERNAME }}/cte_frontend:latest
 
   deploy:
     runs-on: ubuntu-latest
