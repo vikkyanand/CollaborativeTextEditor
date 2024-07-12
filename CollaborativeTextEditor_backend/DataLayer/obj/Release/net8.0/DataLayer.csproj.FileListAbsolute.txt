@@ -1,0 +1,16 @@
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\bin\Release\net8.0\DataLayer.deps.json
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\bin\Release\net8.0\DataLayer.dll
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\bin\Release\net8.0\DataLayer.pdb
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\bin\Release\net8.0\DomainLogic.dll
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\bin\Release\net8.0\DomainLogic.pdb
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.csproj.AssemblyReference.cache
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.AssemblyInfoInputs.cache
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.AssemblyInfo.cs
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.sourcelink.json
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.csproj.Up2Date
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.dll
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\refint\DataLayer.dll
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\DataLayer.pdb
+C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\DataLayer\obj\Release\net8.0\ref\DataLayer.dll
