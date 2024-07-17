@@ -10,11 +10,13 @@ namespace DomainLogic.Supervisor
     {
         private readonly IDocumentRepository _documentRepository;
         private readonly IPermissionRepository _permissionRepository;
+        private readonly INotificationService _notificationService;
 
-        public DocumentService(IDocumentRepository documentRepository, IPermissionRepository permissionRepository)
+        public DocumentService(IDocumentRepository documentRepository, IPermissionRepository permissionRepository, INotificationService notificationService)
         {
             _documentRepository = documentRepository;
             _permissionRepository = permissionRepository;
+            _notificationService = notificationService;
         }
 
         public async Task<List<Document>> GetDocuments(string search)
@@ -40,6 +42,7 @@ namespace DomainLogic.Supervisor
         public async Task DeleteDocument(string id)
         {
             await _documentRepository.DeleteDocument(id);
+            _notificationService.NotifyDocumentDeleted(id);
         }
 
         public async Task<List<Document>> GetDocumentsWithUserPermission(string userId, int skip, int take, string search)

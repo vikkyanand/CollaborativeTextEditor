@@ -50,5 +50,23 @@ namespace DataLayer.RabbitMq
 
             Console.WriteLine($"Published permission revoked message for document ID: {documentId}, email: {email}");
         }
+        public void NotifyDocumentDeleted(string documentId)
+        {
+            var message = new { documentId };
+            var messageBodyBytes = Encoding.UTF8.GetBytes(Newtonsoft.Json.JsonConvert.SerializeObject(message));
+            var properties = _channel.CreateBasicProperties();
+            properties.Persistent = true;
+
+            _channel.BasicPublish(
+                exchange: "",
+                routingKey: "DocumentDeletedQueue",
+                basicProperties: properties,
+                body: messageBodyBytes
+            );
+
+            Console.WriteLine($"Published document deleted message for document ID: {documentId}");
+        }
+
+
     }
 }

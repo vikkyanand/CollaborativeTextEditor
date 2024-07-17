@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MongoDB.Driver.Core.Connections;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
-using static MongoDB.Driver.WriteConcern;
+using System.Threading;
+using System.Threading.Tasks;
 using IConnection = RabbitMQ.Client.IConnection;
 
 namespace DataLayer.RabbitMq
@@ -31,9 +31,10 @@ namespace DataLayer.RabbitMq
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _channel.QueueDeclare(queue: "PermissionRevokedQueue", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueDeclare(queue: "DocumentDeletedQueue", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += async (model, ea) =>
+            var permissionRevokedConsumer = new EventingBasicConsumer(_channel);
+            permissionRevokedConsumer.Received += async (model, ea) =>
             {
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
@@ -51,7 +52,27 @@ namespace DataLayer.RabbitMq
                 }
             };
 
-            _channel.BasicConsume(queue: "PermissionRevokedQueue", autoAck: true, consumer: consumer);
+            var documentDeletedConsumer = new EventingBasicConsumer(_channel);
+            documentDeletedConsumer.Received += async (model, ea) =>
+            {
+                var body = ea.Body.ToArray();
+                var message = Encoding.UTF8.GetString(body);
+                var data = JsonConvert.DeserializeObject<dynamic>(message);
+                string documentId = data.documentId;
+
+                _logger.LogInformation($"Received document deleted message for document ID: {documentId}");
+
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var hubContext = scope.ServiceProvider.GetRequiredService<IHubContext<WebSocketHub>>();
+                    _logger.LogInformation($"Sending document deleted via SignalR for document ID: {documentId}");
+                    await hubContext.Clients.Group(documentId).SendAsync("ReceiveDocumentDeleted", documentId);
+                }
+            };
+
+            _channel.BasicConsume(queue: "PermissionRevokedQueue", autoAck: true, consumer: permissionRevokedConsumer);
+            _channel.BasicConsume(queue: "DocumentDeletedQueue", autoAck: true, consumer: documentDeletedConsumer);
+
             return Task.CompletedTask;
         }
 

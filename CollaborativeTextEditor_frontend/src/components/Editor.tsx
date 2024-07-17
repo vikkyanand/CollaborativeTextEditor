@@ -33,17 +33,33 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   const [showOnlineUsers, setShowOnlineUsers] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const navigate = useNavigate();
   const validDocumentId = currentDocumentId || '';
 
   // Handle permission revoked event
   const handlePermissionRevoked = () => {
+    setNotification('Your permission to access this document has been revoked.');
+    setSnackbarOpen(true);
     setDialogOpen(true);
+  };
+
+  // Handle document deleted event
+  const handleDocumentDeleted = () => {
+    setNotification('This document has been deleted.');
+    setSnackbarOpen(true);
+    setDeleteDialogOpen(true);
   };
 
   // Close the dialog
   const handleCloseDialog = () => {
     setDialogOpen(false);
+    navigate('/file-list');
+  };
+
+  // Close the delete dialog
+  const handleCloseDeleteDialog = () => {
+    setDeleteDialogOpen(false);
     navigate('/file-list');
   };
 
@@ -58,7 +74,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     if (updatedContent !== content) {
       setContent(updatedContent);
     }
-  }, handlePermissionRevoked, setOnlineUsers);
+  }, handlePermissionRevoked, handleDocumentDeleted, (users: string[]) => setOnlineUsers(users));
 
   // Fetch document content and permissions when the component mounts or updates
   useEffect(() => {
@@ -89,7 +105,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     if (docId) {
       logger.log('Saving existing document:', docId);
       await saveDocument(docId, content, documentName);
-      setNotification('Document saved successfully');
+      setNotification('Document saved successfully.');
       setSnackbarOpen(true);
     } else {
       if (documentName.trim() === '') {
@@ -104,7 +120,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         docId = newDocument.id;
         setCurrentDocumentId(docId);
         if (docId) await saveDocument(docId, content, documentName);
-        setNotification('Document created and saved successfully');
+        setNotification('Document created and saved successfully.');
         setSnackbarOpen(true);
       } else {
         logger.error('Failed to create new document');
@@ -168,7 +184,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     const shareLink = `${window.location.origin}/editor/${currentDocumentId}`;
     navigator.clipboard.writeText(shareLink)
       .then(() => {
-        setNotification('Sharable link is copied to clipboard');
+        setNotification('Sharable link is copied to clipboard.');
         setSnackbarOpen(true);
       })
       .catch((err) => {
@@ -179,7 +195,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
 
   // Handle permission change notification
   const handlePermissionChange = (email: string, canWrite: boolean) => {
-    setNotification(`Permission ${canWrite ? 'write' : 'read'} granted to ${email}`);
+    setNotification(`Permission ${canWrite ? 'write' : 'read'} is granted to ${email}`);
     setSnackbarOpen(true);
   };
 
@@ -279,6 +295,22 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog} color="primary">
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={deleteDialogOpen}
+        onClose={handleCloseDeleteDialog}
+      >
+        <DialogTitle>Document Deleted</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            This document has been deleted.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDeleteDialog} color="primary">
             OK
           </Button>
         </DialogActions>

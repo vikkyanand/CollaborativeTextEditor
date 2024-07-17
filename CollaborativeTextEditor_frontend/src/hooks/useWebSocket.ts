@@ -8,7 +8,8 @@ const useWebSocket = (
   documentId: string,
   onUpdate: (content: string) => void,
   onPermissionRevoked: () => void,
-  setOnlineUsers: React.Dispatch<React.SetStateAction<string[]>>
+  onDocumentDeleted: () => void,
+  onOnlineUsersUpdate: (users: string[]) => void 
 ) => {
   const connectionRef = useRef<signalR.HubConnection | null>(null);
   const [isCleaningUp, setIsCleaningUp] = useState(false);
@@ -63,8 +64,15 @@ const useWebSocket = (
         }
       });
 
+      connection.on('ReceiveDocumentDeleted', (deletedDocumentId: string) => {
+        logger.log('Received document deleted for document ID:', deletedDocumentId);
+        if (deletedDocumentId === documentId) {
+          onDocumentDeleted();
+        }
+      });
+
       connection.on('UpdateOnlineUsers', (users: string[]) => {
-        setOnlineUsers(users);
+        onOnlineUsersUpdate(users);  // Changed this line
       });
 
       connection.onclose(async () => {

@@ -4,5 +4,6 @@
     {
         void NotifyDocumentUpdate(string documentId, string content);
         void NotifyPermissionRevoked(string documentId, string email);
+        void NotifyDocumentDeleted(string documentId); 
     }
 }
