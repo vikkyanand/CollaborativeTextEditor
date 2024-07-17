@@ -39,15 +39,11 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
 
   // Handle permission revoked event
   const handlePermissionRevoked = () => {
-    setNotification('Your permission to access this document has been revoked.');
-    setSnackbarOpen(true);
     setDialogOpen(true);
   };
 
   // Handle document deleted event
   const handleDocumentDeleted = () => {
-    setNotification('This document has been deleted.');
-    setSnackbarOpen(true);
     setDeleteDialogOpen(true);
   };
 
@@ -194,8 +190,10 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   };
 
   // Handle permission change notification
-  const handlePermissionChange = (email: string, canWrite: boolean) => {
-    setNotification(`Permission ${canWrite ? 'write' : 'read'} is granted to ${email}`);
+  const handlePermissionChange = (email: string, canWrite: boolean, action: 'granted' | 'revoked') => {
+    const actionText = action === 'granted' ? 'granted to' : 'revoked from';
+    const permissionType = canWrite ? 'Write' : 'Read';
+    setNotification(`${permissionType} permission ${actionText} ${email}`);
     setSnackbarOpen(true);
   };
 

@@ -9,7 +9,7 @@ interface PermissionManagerProps {
   documentId: string;
   canWrite: boolean;
   userId: string;
-  onPermissionChange: (email: string, canWrite: boolean) => void;
+  onPermissionChange: (email: string, canWrite: boolean, action: 'granted' | 'revoked') => void;
 }
 
 interface Permission {
@@ -48,7 +48,7 @@ const PermissionManager: React.FC<PermissionManagerProps> = ({ documentId, canWr
       await grantPermission(documentId, email, canWritePermission);
       await fetchPermissions();
       setEmail('');
-      onPermissionChange(email, canWritePermission); // Notify permission change
+      onPermissionChange(email, canWritePermission, 'granted'); // Notify permission change
     } catch (error) {
       logger.error('Error granting permission', error);
     }
@@ -60,6 +60,7 @@ const PermissionManager: React.FC<PermissionManagerProps> = ({ documentId, canWr
       await revokePermission(documentId, email);
       await fetchPermissions();
       setConfirmDialog({ open: false, email: '' });
+      onPermissionChange(email, false, 'revoked'); // Notify permission change
       
       // If the current user's permission was revoked, navigate back
       if (email === currentUserEmail) {
