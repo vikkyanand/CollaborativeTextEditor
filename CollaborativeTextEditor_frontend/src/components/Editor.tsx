@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import CustomQuill from './CustomQuill';
-import { Container, Typography, Paper, Box, Button, Modal, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, IconButton } from '@mui/material';
+import { Container, Paper, Box, Button, Modal, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, IconButton, Typography } from '@mui/material';
 import { Save as SaveIcon, Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, People as PeopleIcon, Share as ShareIcon, Close as CloseIcon } from '@mui/icons-material';
 import DocumentNameInput from './DocumentNameInput';
 import PermissionManager from './PermissionManager';
@@ -90,6 +90,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
       logger.log('Saving existing document:', docId);
       await saveDocument(docId, content, documentName);
       setNotification('Document saved successfully');
+      setSnackbarOpen(true);
     } else {
       if (documentName.trim() === '') {
         logger.warn('Attempted to save document with empty name');
@@ -104,6 +105,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         setCurrentDocumentId(docId);
         if (docId) await saveDocument(docId, content, documentName);
         setNotification('Document created and saved successfully');
+        setSnackbarOpen(true);
       } else {
         logger.error('Failed to create new document');
         alert('Error creating document');
@@ -166,13 +168,19 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     const shareLink = `${window.location.origin}/editor/${currentDocumentId}`;
     navigator.clipboard.writeText(shareLink)
       .then(() => {
-        setNotification(null); // Clear any existing notifications before setting the new one
+        setNotification('Sharable link is copied to clipboard');
         setSnackbarOpen(true);
       })
       .catch((err) => {
         console.error('Failed to copy share link:', err);
         alert('Failed to copy the link. Please try again.');
       });
+  };
+
+  // Handle permission change notification
+  const handlePermissionChange = (email: string, canWrite: boolean) => {
+    setNotification(`Permission ${canWrite ? 'write' : 'read'} granted to ${email}`);
+    setSnackbarOpen(true);
   };
 
   // Render the component
@@ -232,7 +240,6 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             readOnly={!canWrite || preview}
           />
         </div>
-        {notification && <Typography variant="body2" color="textSecondary" style={{ marginTop: '10px' }}>{notification}</Typography>}
       </Paper>
       <Modal open={showPermissions} onClose={() => setShowPermissions(false)}>
         <Box component="div" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, backgroundColor: 'white', padding: '20px', boxShadow: '24px' }}>
@@ -240,6 +247,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             documentId={currentDocumentId || ''}
             canWrite={canWrite}
             userId={userId}
+            onPermissionChange={handlePermissionChange}
           />
           <IconButton style={{ position: 'absolute', top: '10px', right: '10px' }} onClick={() => setShowPermissions(false)}>
             <CloseIcon />
@@ -279,13 +287,18 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={() => setSnackbarOpen(false)}
-        message="Sharable link is copied to clipboard"
+        message={notification}
         ContentProps={{
           style: {
             backgroundColor: 'white', 
             color: 'black',
           },
         }}
+        action={
+          <IconButton size="small" aria-label="close" color="inherit" onClick={() => setSnackbarOpen(false)}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        }
       />
     </Container>
   );

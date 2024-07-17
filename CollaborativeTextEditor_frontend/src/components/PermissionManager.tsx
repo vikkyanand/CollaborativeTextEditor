@@ -9,6 +9,7 @@ interface PermissionManagerProps {
   documentId: string;
   canWrite: boolean;
   userId: string;
+  onPermissionChange: (email: string, canWrite: boolean) => void;
 }
 
 interface Permission {
@@ -17,7 +18,7 @@ interface Permission {
 }
 
 // PermissionManager component
-const PermissionManager: React.FC<PermissionManagerProps> = ({ documentId, canWrite, userId }) => {
+const PermissionManager: React.FC<PermissionManagerProps> = ({ documentId, canWrite, userId, onPermissionChange }) => {
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [email, setEmail] = useState('');
   const [permission, setPermission] = useState<'read' | 'write'>('read');
@@ -47,6 +48,7 @@ const PermissionManager: React.FC<PermissionManagerProps> = ({ documentId, canWr
       await grantPermission(documentId, email, canWritePermission);
       await fetchPermissions();
       setEmail('');
+      onPermissionChange(email, canWritePermission); // Notify permission change
     } catch (error) {
       logger.error('Error granting permission', error);
     }
