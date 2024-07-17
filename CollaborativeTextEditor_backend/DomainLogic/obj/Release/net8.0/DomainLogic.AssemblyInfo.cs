@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DomainLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deab3634ac52b0623e2f9c6063e73dff4d59cbdf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf6443bac2111d7427a762078b3a262dbc536288")]
 [assembly: System.Reflection.AssemblyProductAttribute("DomainLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DomainLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

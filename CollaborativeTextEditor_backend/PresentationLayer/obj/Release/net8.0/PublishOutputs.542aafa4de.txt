@@ -1,11 +1,6 @@
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\PresentationLayer.exe
-C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\publish\web.config
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\appsettings.Development.json
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\appsettings.json
-C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\publish\appsettings.Development.json
-C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\publish\appsettings.json
-C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\publish\PresentationLayer.deps.json
-C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\publish\PresentationLayer.runtimeconfig.json
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\PresentationLayer.dll
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\PresentationLayer.deps.json
 C:\Users\vikky\OneDrive\Desktop\final_project\CollaborativeTextEditor\CollaborativeTextEditor_backend\PresentationLayer\bin\Release\net8.0\publish\PresentationLayer.runtimeconfig.json
