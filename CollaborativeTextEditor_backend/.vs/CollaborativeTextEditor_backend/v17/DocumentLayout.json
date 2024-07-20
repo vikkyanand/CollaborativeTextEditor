@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -69,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,11 +142,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
+              "RelativeDocumentMoniker": "PresentationLayer\\appsettings.json",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
+              "RelativeToolTip": "PresentationLayer\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-07T06:27:45.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RabbitMqConsumer.cs.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
               "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
@@ -154,25 +166,24 @@
               "RelativeToolTip": "DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
               "ViewState": "AQIAADgAAAAAAAAAAAAAAFEAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:12.294Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:17:12.294Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RabbitMqPublisher.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "RelativeToolTip": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAuwEAAAAAOAAAA",
+              "DocumentIndex": 0,
+              "Title": "WebSocketHub.cs",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
+              "RelativeDocumentMoniker": "DataLayer\\SignalR\\WebSocketHub.cs",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
+              "RelativeToolTip": "DataLayer\\SignalR\\WebSocketHub.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:00.645Z",
+              "WhenOpened": "2024-07-06T17:17:28.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "INotificationService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\INotificationService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\INotificationService.cs",
@@ -180,12 +191,11 @@
               "RelativeToolTip": "DomainLogic\\Supervisor\\INotificationService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:14.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:13:14.501Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DocumentService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\DocumentService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\DocumentService.cs",
@@ -193,12 +203,11 @@
               "RelativeToolTip": "DomainLogic\\Supervisor\\DocumentService.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAiwDgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:29.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:13:29.865Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Program.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Program.cs",
@@ -206,12 +215,11 @@
               "RelativeToolTip": "PresentationLayer\\Program.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAowB0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T06:25:36.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-07T06:25:36.425Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DocumentsController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\DocumentsController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\DocumentsController.cs",
@@ -219,12 +227,11 @@
               "RelativeToolTip": "PresentationLayer\\Controllers\\DocumentsController.cs",
               "ViewState": "AQIAAEAAAAAAAAAAAAAowFkAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T16:58:46.467Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T16:58:46.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "PresentationLayer\\Properties\\launchSettings.json",
@@ -232,25 +239,23 @@
               "RelativeToolTip": "PresentationLayer\\Properties\\launchSettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-17T13:27:42.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
-              "RelativeDocumentMoniker": "PresentationLayer\\appsettings.json",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
-              "RelativeToolTip": "PresentationLayer\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-07T06:27:45.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-17T13:27:42.858Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "RabbitMqPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
+              "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
+              "RelativeToolTip": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAuwEAAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T17:17:00.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "PermissionService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\PermissionService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\PermissionService.cs",
@@ -258,12 +263,11 @@
               "RelativeToolTip": "DomainLogic\\Supervisor\\PermissionService.cs",
               "ViewState": "AQIAACkAAAAAAAAAAAAqwEYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:00.314Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:13:00.314Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PermissionsController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\PermissionsController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\PermissionsController.cs",
@@ -271,12 +275,11 @@
               "RelativeToolTip": "PresentationLayer\\Controllers\\PermissionsController.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAEEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T16:59:28.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T16:59:28.576Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DocumentRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\DocumentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\DocumentRepository.cs",
@@ -284,12 +287,11 @@
               "RelativeToolTip": "DataLayer\\Data\\DocumentRepository.cs",
               "ViewState": "AQIAADIAAAAAAAAAAAAgwAgAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:32.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:16:32.557Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PermissionRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\PermissionRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\PermissionRepository.cs",
@@ -297,12 +299,11 @@
               "RelativeToolTip": "DataLayer\\Data\\PermissionRepository.cs",
               "ViewState": "AQIAAEwAAAAAAAAAAAAkwF0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:10.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-06T17:16:10.421Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "PresentationLayer",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
               "RelativeDocumentMoniker": "PresentationLayer\\PresentationLayer.csproj",
@@ -313,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\UserService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\UserService.cs",
@@ -325,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "MongoDbContext.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\MongoDbContext.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\MongoDbContext.cs",
@@ -337,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\UserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\UserRepository.cs",
@@ -349,7 +350,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\UsersController.cs",
@@ -358,18 +359,6 @@
               "ViewState": "AQIAABcAAAAAAAAAAAAkwDIAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-06T16:59:05.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "WebSocketHub.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
-              "RelativeDocumentMoniker": "DataLayer\\SignalR\\WebSocketHub.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
-              "RelativeToolTip": "DataLayer\\SignalR\\WebSocketHub.cs",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAgwEgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:28.856Z"
             },
             {
               "$type": "Document",

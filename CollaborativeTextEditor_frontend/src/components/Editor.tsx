@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import CustomQuill from './CustomQuill';
 import { Container, Paper, Box, Button, Modal, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, IconButton, Typography } from '@mui/material';
 import { Save as SaveIcon, Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, People as PeopleIcon, Share as ShareIcon, Close as CloseIcon } from '@mui/icons-material';
@@ -11,7 +11,6 @@ import * as signalR from '@microsoft/signalr';
 import { useNavigate } from 'react-router-dom';
 import { logger } from '../logger';
 
-// Define the interface for the editor properties
 interface EditorProps {
   documentId?: string | null;
   onBack: () => void;
@@ -21,7 +20,6 @@ interface EditorProps {
   preview?: boolean;
 }
 
-// Editor component definition
 const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, email, preview = false }) => {
   const [content, setContent] = useState('');
   const [documentName, setDocumentName] = useState('');
@@ -34,45 +32,53 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [cursorPositions, setCursorPositions] = useState<{ email: string, index: number, length: number }[]>([]);
   const navigate = useNavigate();
   const validDocumentId = currentDocumentId || '';
+  const quillRef = useRef<any>(null);
 
-  // Handle permission revoked event
   const handlePermissionRevoked = () => {
     setDialogOpen(true);
   };
 
-  // Handle document deleted event
   const handleDocumentDeleted = () => {
     setDeleteDialogOpen(true);
   };
 
-  // Close the dialog
   const handleCloseDialog = () => {
     setDialogOpen(false);
     navigate('/file-list');
   };
 
-  // Close the delete dialog
   const handleCloseDeleteDialog = () => {
     setDeleteDialogOpen(false);
     navigate('/file-list');
   };
 
-  // WebSocket URL from environment variables
   const websocketUrl = process.env.REACT_APP_WEBSOCKET_URL;
   if (!websocketUrl) {
     throw new Error('REACT_APP_WEBSOCKET_URL is not defined in the .env file');
   }
 
-  // WebSocket connection setup using a custom hook
-  const connectionRef = useWebSocket(websocketUrl, validDocumentId, (updatedContent: string) => {
-    if (updatedContent !== content) {
-      setContent(updatedContent);
+  const connectionRef = useWebSocket(
+    websocketUrl,
+    validDocumentId,
+    (updatedContent: string) => {
+      if (updatedContent !== content) {
+        setContent(updatedContent);
+      }
+    },
+    handlePermissionRevoked,
+    handleDocumentDeleted,
+    (users: string[]) => setOnlineUsers(users),
+    (email: string, index: number, length: number) => {
+      setCursorPositions(prev => {
+        const newPositions = prev.filter(p => p.email !== email);
+        return [...newPositions, { email, index, length }];
+      });
     }
-  }, handlePermissionRevoked, handleDocumentDeleted, (users: string[]) => setOnlineUsers(users));
+  );
 
-  // Fetch document content and permissions when the component mounts or updates
   useEffect(() => {
     if (currentDocumentId) {
       (async () => {
@@ -90,7 +96,6 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     }
   }, [currentDocumentId, preview]);
 
-  // Handle saving the document
   const handleSave = useCallback(async () => {
     if (!canWrite) {
       logger.warn('User does not have permission to edit this document.');
@@ -125,17 +130,13 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
       }
     }
 
-    // Send document update via WebSocket if connected
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       logger.log('Sending document update via WebSocket');
       connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, content)
         .catch((err) => console.log('Error sending document update:', err));
     }
-
-    setTimeout(() => setNotification(null), 3000);
   }, [canWrite, content, currentDocumentId, documentName, connectionRef, validDocumentId]);
 
-  // Add event listener for saving document with Ctrl+S
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 's') {
@@ -150,10 +151,8 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     };
   }, [handleSave]);
 
-  // Decode email to its original form
   const decodeEmail = (encodedEmail: string) => encodedEmail.replace(/__/g, '.');
 
-  // Handle content change with debouncing
   const handleContentChange = useDebounce((newContent: string) => {
     console.log('Content changed:', newContent);
     if (newContent !== content) {
@@ -165,7 +164,13 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     }
   }, 100);
 
-  // Leave document group when component unmounts
+  const handleCursorPositionChange = useDebounce((range: { index: number, length: number }) => {
+    if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
+      connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
+        .catch((err) => console.log('Error sending cursor position:', err));
+    }
+  }, 100);
+
   useEffect(() => {
     return () => {
       if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
@@ -175,7 +180,6 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     };
   }, [validDocumentId]);
 
-  // Handle sharing document link
   const handleShare = () => {
     const shareLink = `${window.location.origin}/editor/${currentDocumentId}`;
     navigator.clipboard.writeText(shareLink)
@@ -189,7 +193,6 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
       });
   };
 
-  // Handle permission change notification
   const handlePermissionChange = (email: string, canWrite: boolean, action: 'granted' | 'revoked') => {
     const actionText = action === 'granted' ? 'granted to' : 'revoked from';
     const permissionType = canWrite ? 'Write' : 'Read';
@@ -197,7 +200,6 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     setSnackbarOpen(true);
   };
 
-  // Render the component
   return (
     <Container maxWidth="lg" style={{ height: preview ? 'auto' : '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       {!preview && (
@@ -239,7 +241,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
           </Button>
         </Box>
       )}
-      <Paper style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column' }}>
+      <Paper style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column', position: 'relative' }}>
         {!preview && (
           <DocumentNameInput
             documentName={documentName}
@@ -247,11 +249,14 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             canWrite={canWrite}
           />
         )}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '20px' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '20px', position: 'relative' }}>
           <CustomQuill
+            ref={quillRef}
             value={content}
             onChange={handleContentChange}
             readOnly={!canWrite || preview}
+            onCursorPositionChange={handleCursorPositionChange}
+            cursorPositions={cursorPositions}
           />
         </div>
       </Paper>
@@ -315,7 +320,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
       </Dialog>
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={6000}
+        autoHideDuration={5000}
         onClose={() => setSnackbarOpen(false)}
         message={notification}
         ContentProps={{

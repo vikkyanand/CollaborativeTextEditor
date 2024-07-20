@@ -1,28 +1,45 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Collections.Concurrent;
-using System.Text.RegularExpressions;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DataLayer.SignalR
 {
     public class WebSocketHub : Hub
     {
-        private static ConcurrentDictionary<string, ConcurrentDictionary<string, string>> DocumentUsers = new ConcurrentDictionary<string, ConcurrentDictionary<string, string>>();
+        private static ConcurrentDictionary<string, ConcurrentDictionary<string, (string email, int index, int length)>> DocumentUsers = new ConcurrentDictionary<string, ConcurrentDictionary<string, (string email, int index, int length)>>();
 
         public async Task SendDocumentUpdate(string documentId, string content)
         {
             await Clients.Group(documentId).SendAsync("ReceiveDocumentUpdate", content);
         }
 
+        public async Task UpdateCursorPosition(string documentId, int index, int length)
+        {
+            if (DocumentUsers.TryGetValue(documentId, out var users) && users.TryGetValue(Context.ConnectionId, out var user))
+            {
+                var (email, _, _) = user;
+                users[Context.ConnectionId] = (email, index, length);
+                await Clients.OthersInGroup(documentId).SendAsync("ReceiveCursorPositionUpdate", email, index, length);
+                Console.WriteLine($"Cursor position updated for {email} to {index}");
+            }
+            else
+            {
+                Console.WriteLine("Failed to update cursor position.");
+            }
+        }
+
+
         public async Task JoinDocumentGroup(string documentId, string email)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, documentId);
 
             DocumentUsers.AddOrUpdate(documentId,
-                _ => new ConcurrentDictionary<string, string>(),
+                _ => new ConcurrentDictionary<string, (string email, int index, int length)>(),
                 (_, dict) => dict);
 
-            DocumentUsers[documentId][Context.ConnectionId] = email;
+            DocumentUsers[documentId][Context.ConnectionId] = (email, 0, 0);
 
             await UpdateOnlineUsers(documentId);
         }
@@ -47,7 +64,7 @@ namespace DataLayer.SignalR
         {
             if (DocumentUsers.TryGetValue(documentId, out var users))
             {
-                var onlineUsers = users.Values.Distinct().ToList();
+                var onlineUsers = users.Values.Select(u => u.email).Distinct().ToList();
                 await Clients.Group(documentId).SendAsync("UpdateOnlineUsers", onlineUsers);
             }
         }
@@ -63,11 +80,6 @@ namespace DataLayer.SignalR
             }
 
             await base.OnDisconnectedAsync(exception);
-        }
-
-        public async Task PermissionRevoked(string documentId, string email)
-        {
-            await Clients.Group(documentId).SendAsync("ReceivePermissionRevoked", email);
         }
     }
 }
