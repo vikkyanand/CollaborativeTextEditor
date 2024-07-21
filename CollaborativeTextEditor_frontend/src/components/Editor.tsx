@@ -64,9 +64,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     websocketUrl,
     validDocumentId,
     (updatedContent: string) => {
-      if (updatedContent !== content) {
-        setContent(updatedContent);
-      }
+      setContent(updatedContent);
     },
     handlePermissionRevoked,
     handleDocumentDeleted,
@@ -155,21 +153,19 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
 
   const handleContentChange = useDebounce((newContent: string) => {
     console.log('Content changed:', newContent);
-    if (newContent !== content) {
-      setContent(newContent);
-      if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
-        connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, newContent)
-          .catch((err) => console.log('Error sending document update:', err));
-      }
+    setContent(newContent);
+    if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
+      connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, newContent)
+        .catch((err) => console.log('Error sending document update:', err));
     }
-  }, 100);
+  }, 200);
 
   const handleCursorPositionChange = useDebounce((range: { index: number, length: number }) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
         .catch((err) => console.log('Error sending cursor position:', err));
     }
-  }, 100);
+  }, 200);
 
   useEffect(() => {
     return () => {

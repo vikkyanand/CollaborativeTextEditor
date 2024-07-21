@@ -11,11 +11,9 @@ class EmptyLine extends Block {
     node.setAttribute('data-empty-line', 'true');
     return node;
   }
-
   static formats(domNode: any) {
     return domNode.getAttribute('data-empty-line');
   }
-
   format(name: string, value: any) {
     if (name === 'emptyLine' && value) {
       this.domNode.setAttribute('data-empty-line', value);
@@ -24,29 +22,66 @@ class EmptyLine extends Block {
     }
   }
 }
-
 EmptyLine.blotName = 'emptyLine';
 EmptyLine.tagName = 'P';
-
 Quill.register(EmptyLine, true);
+
+class CustomModule {
+  quill: any;
+  options: any;
+
+  constructor(quill: any, options: any) {
+    this.quill = quill;
+    this.options = options;
+
+    this.quill.keyboard.addBinding({ key: Quill.import('modules/keyboard').keys.ENTER }, this.enterHandler.bind(this));
+  }
+
+  enterHandler(range: Range | null, context: any) {
+    if (!range) return true;
+
+    const lastChar = this.quill.getText(range.index - 1, 1);
+    const isAtLineEnd = lastChar === '\n' || range.index === this.quill.getLength() - 1;
+
+    if (isAtLineEnd) {
+      // Insert an EmptyLine blot
+      this.quill.insertEmbed(range.index, 'emptyLine', true);
+      // Move the cursor to the next line
+      this.quill.setSelection(range.index + 1, 0);
+      return false;
+    }
+    return true;
+  }
+}
+
+Quill.register('modules/customModule', CustomModule);
 
 const modules = {
   toolbar: [
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    [{ 'font': [] }],
-    [{ 'size': ['small', false, 'large', 'huge'] }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ font: [] }],
+    [{ size: ['small', false, 'large', 'huge'] }],
     ['bold', 'italic', 'underline', 'strike'],
-    [{ 'color': [] }, { 'background': [] }],
-    [{ 'script': 'sub' }, { 'script': 'super' }],
-    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-    [{ 'indent': '-1' }, { 'indent': '+1' }],
-    [{ 'direction': 'rtl' }],
-    [{ 'align': [] }],
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ indent: '-1' }, { indent: '+1' }],
+    [{ direction: 'rtl' }],
+    [{ align: [] }],
     ['link', 'image', 'video'],
     ['clean']
   ],
   clipboard: {
     matchVisual: false,
+  },
+  customModule: true,
+  keyboard: {
+    bindings: {
+      enter: {
+        key: Quill.import('modules/keyboard').keys.ENTER,
+        handler: function () { return true; }
+      }
+    }
   }
 };
 
@@ -75,7 +110,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
 
   const handleSelectionChange = (range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
     if (range) {
-      onCursorPositionChange(range);
+      onCursorPositionChange(range as { index: number, length: number });
     }
   };
 
@@ -150,6 +185,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
       modules={modules}
       formats={formats}
       style={{ height: '500px' }}
+      preserveWhitespace={true}
     />
   );
 });
