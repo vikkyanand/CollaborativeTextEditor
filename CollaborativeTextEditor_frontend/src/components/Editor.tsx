@@ -158,14 +158,14 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
       connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, newContent)
         .catch((err) => console.log('Error sending document update:', err));
     }
-  }, 200);
+  }, 100);
 
   const handleCursorPositionChange = useDebounce((range: { index: number, length: number }) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
         .catch((err) => console.log('Error sending cursor position:', err));
     }
-  }, 200);
+  }, 100);
 
   useEffect(() => {
     return () => {
