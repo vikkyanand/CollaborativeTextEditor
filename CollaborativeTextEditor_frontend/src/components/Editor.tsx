@@ -33,6 +33,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [cursorPositions, setCursorPositions] = useState<{ email: string, index: number, length: number }[]>([]);
+  const [isEditorFocused, setIsEditorFocused] = useState(false);
   const navigate = useNavigate();
   const validDocumentId = currentDocumentId || '';
   const quillRef = useRef<any>(null);
@@ -160,10 +161,16 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     }
   }, 100);
 
-  const handleCursorPositionChange = useDebounce((range: { index: number, length: number }) => {
+  const handleCursorPositionChange = useDebounce((range: { index: number, length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
-      connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
-        .catch((err) => console.log('Error sending cursor position:', err));
+      if (range) {
+        connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
+          .catch((err) => console.log('Error sending cursor position:', err));
+      } else {
+        // Send a special signal to indicate cursor should be hidden
+        connectionRef.current.invoke('HideCursor', validDocumentId)
+          .catch((err) => console.log('Error hiding cursor:', err));
+      }
     }
   }, 100);
 
@@ -253,6 +260,8 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             readOnly={!canWrite || preview}
             onCursorPositionChange={handleCursorPositionChange}
             cursorPositions={cursorPositions}
+            isEditorFocused={isEditorFocused}
+            setIsEditorFocused={setIsEditorFocused}
           />
         </div>
       </Paper>

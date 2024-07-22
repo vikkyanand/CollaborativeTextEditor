@@ -94,11 +94,13 @@ interface CustomQuillProps {
   value: string;
   onChange: (content: string) => void;
   readOnly: boolean;
-  onCursorPositionChange: (range: { index: number, length: number }) => void;
+  onCursorPositionChange: (range: { index: number, length: number } | null) => void;
   cursorPositions: { email: string, index: number, length: number }[];
+  isEditorFocused: boolean;
+  setIsEditorFocused: (focused: boolean) => void;
 }
 
-const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange, readOnly, onCursorPositionChange, cursorPositions }, ref) => {
+const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange, readOnly, onCursorPositionChange, cursorPositions, isEditorFocused, setIsEditorFocused }, ref) => {
   const quillRef = useRef<ReactQuill>(null);
   const cursorOverlaysRef = useRef<{ [email: string]: { overlay: HTMLDivElement, marker: HTMLDivElement, timer?: NodeJS.Timeout } }>({});
 
@@ -109,10 +111,33 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
   };
 
   const handleSelectionChange = (range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
-    if (range) {
-      onCursorPositionChange(range as { index: number, length: number });
+    if (isEditorFocused && range) {
+      onCursorPositionChange({ index: range.index, length: range.length });
+    } else {
+      onCursorPositionChange(null);
     }
   };
+
+  useEffect(() => {
+    const quill = quillRef.current?.getEditor();
+    if (!quill) return;
+
+    const handleFocus = () => {
+      setIsEditorFocused(true);
+    };
+
+    const handleBlur = () => {
+      setIsEditorFocused(false);
+    };
+
+    quill.root.addEventListener('focus', handleFocus);
+    quill.root.addEventListener('blur', handleBlur);
+
+    return () => {
+      quill.root.removeEventListener('focus', handleFocus);
+      quill.root.removeEventListener('blur', handleBlur);
+    };
+  }, [setIsEditorFocused]);
 
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
