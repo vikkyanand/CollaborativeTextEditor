@@ -1,24 +1,44 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { getDocuments, getDocumentsWithUserPermission, deleteDocument, getPermissionsByDocumentId } from '../services/api';
-import { 
-  Container, List, ListItem, ListItemText, Typography, Paper, 
-  Divider, Box, TextField, CircularProgress, IconButton, Menu, 
-  MenuItem, Dialog, DialogActions, DialogContent, DialogContentText, 
-  DialogTitle, Button, Snackbar
+import {
+  getDocumentsWithUserPermission,
+  deleteDocument,
+  getPermissionsByDocumentId,
+} from '../services/api';
+import {
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Paper,
+  Divider,
+  Box,
+  TextField,
+  CircularProgress,
+  IconButton,
+  Menu,
+  MenuItem,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Button,
+  Snackbar,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 import debounce from 'lodash/debounce';
 import Editor from './Editor';
 import { logger } from '../logger';
 
-// Define the interface for the file list properties
 interface FileListProps {
   onSelectDocument: (id: string) => void;
   onPermissionDenied: (message: string) => void;
   userId: string;
 }
 
-// Define the interface for a document
 interface Document {
   id: string;
   name: string;
@@ -26,7 +46,6 @@ interface Document {
   lastEditedDate: string;
 }
 
-// FileList component definition
 const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenied, userId }) => {
   const [documents, setDocuments] = useState<Document[]>([]);
   const [skip, setSkip] = useState(0);
@@ -45,48 +64,53 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewDocId, setPreviewDocId] = useState<string | null>(null);
 
-  // Load documents with user permissions
-  const loadDocuments = useCallback(async (reset = false) => {
-    if (loading) return;
-    setLoading(true);
-    try {
-      const newSkip = reset ? 0 : skip;
-      logger.log('Loading documents:', { skip: newSkip, take: 10, search });
-      
-      const docs = await getDocumentsWithUserPermission(userId, newSkip, 10, search);
-      setDocuments(prevDocs => reset ? docs : [...prevDocs, ...docs]);
-      setSkip(newSkip + 10);
-      setHasMore(docs.length === 10);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-      // Check if more documents need to be loaded
-      if (containerRef.current && containerRef.current.clientHeight > containerRef.current.scrollHeight) {
-        loadDocuments();
+  const loadDocuments = useCallback(
+    async (reset = false) => {
+      if (loading) return;
+      setLoading(true);
+      try {
+        const newSkip = reset ? 0 : skip;
+        logger.log('Loading documents:', { skip: newSkip, take: 10, search });
+
+        const docs = await getDocumentsWithUserPermission(userId, newSkip, 10, search);
+        setDocuments((prevDocs) => (reset ? docs : [...prevDocs, ...docs]));
+        setSkip(newSkip + 10);
+        setHasMore(docs.length === 10);
+
+        if (containerRef.current && containerRef.current.clientHeight > containerRef.current.scrollHeight) {
+          loadDocuments();
+        }
+      } catch (error) {
+        logger.error('Error fetching documents:', error);
+        setSnackbarMessage('Failed to load documents. Please try again.');
+        setSnackbarOpen(true);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      logger.error('Error fetching documents:', error);
-      setSnackbarMessage('Failed to load documents. Please try again.');
-      setSnackbarOpen(true);
-    } finally {
-      setLoading(false);
-    }
-  }, [skip, search, loading, userId]);
+    },
+    [skip, search, loading, userId]
+  );
 
-  // Handle scroll event to load more documents
-  const handleScroll = useMemo(() => debounce(() => {
-    if (!containerRef.current) return;
-    const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
-    logger.log('Scroll event triggered:', { scrollTop, scrollHeight, clientHeight });
-    if (scrollHeight - scrollTop <= clientHeight * 1.5 && !loading && hasMore) {
-      loadDocuments();
-    }
-  }, 100), [loadDocuments, loading, hasMore]);
+  const handleScroll = useMemo(
+    () =>
+      debounce(() => {
+        if (!containerRef.current) return;
+        const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+        logger.log('Scroll event triggered:', { scrollTop, scrollHeight, clientHeight });
+        if (scrollHeight - scrollTop <= clientHeight * 1.5 && !loading && hasMore) {
+          loadDocuments();
+        }
+      }, 100),
+    [loadDocuments, loading, hasMore]
+  );
 
-  // Load documents when search query changes
   useEffect(() => {
     loadDocuments(true);
   }, [search]);
 
-  // Add scroll event listener
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
@@ -100,26 +124,26 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     };
   }, [handleScroll]);
 
-  // Handle search input change with debouncing
-  const handleSearchChange = useMemo(() => debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setSkip(0);
-    setHasMore(true);
-    setDocuments([]);
-  }, 300), []);
+  const handleSearchChange = useMemo(
+    () =>
+      debounce((e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+        setSkip(0);
+        setHasMore(true);
+        setDocuments([]);
+      }, 300),
+    []
+  );
 
-  // Handle menu click to show document options
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>, docId: string) => {
     setAnchorEl(event.currentTarget);
     setSelectedDocId(docId);
   };
 
-  // Handle menu close
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
 
-  // Handle document click to check permissions and select document
   const handleDocumentClick = async (docId: string) => {
     try {
       const permissions = await getPermissionsByDocumentId(docId);
@@ -138,7 +162,6 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     }
   };
 
-  // Handle view document action
   const handleViewDocument = async () => {
     if (!selectedDocId) {
       setSnackbarMessage('No document selected for viewing');
@@ -150,7 +173,7 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     try {
       const permissions = await getPermissionsByDocumentId(selectedDocId);
       const userPermission = permissions.find((perm: { userId: string; canWrite: boolean }) => perm.userId === userId);
-      
+
       if (userPermission) {
         setPreviewDocId(selectedDocId);
         setPreviewOpen(true);
@@ -166,13 +189,11 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     handleMenuClose();
   };
 
-  // Handle close preview action
   const handleClosePreview = () => {
     setPreviewOpen(false);
     setPreviewDocId(null);
   };
 
-  // Handle open delete dialog action
   const handleOpenDeleteDialog = async () => {
     if (!selectedDocId) {
       setSnackbarMessage('No document selected for deletion');
@@ -183,7 +204,7 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     try {
       const permissions = await getPermissionsByDocumentId(selectedDocId);
       const userPermission = permissions.find((perm: { userId: string; canWrite: boolean }) => perm.userId === userId);
-      
+
       if (userPermission && userPermission.canWrite) {
         setDeleteDialogOpen(true);
       } else {
@@ -198,7 +219,6 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     handleMenuClose();
   };
 
-  // Handle delete document action
   const handleDeleteDocument = async () => {
     if (!selectedDocId || isDeleting) return;
 
@@ -206,7 +226,7 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     try {
       logger.log('Deleting document:', selectedDocId);
       await deleteDocument(selectedDocId);
-      setDocuments(prevDocuments => prevDocuments.filter(doc => doc.id !== selectedDocId));
+      setDocuments((prevDocuments) => prevDocuments.filter((doc) => doc.id !== selectedDocId));
       setDeleteDialogOpen(false);
       setSnackbarMessage('Document successfully deleted');
       setSnackbarOpen(true);
@@ -220,11 +240,12 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
     }
   };
 
-  // Render the component
   return (
-    <Container ref={containerRef} style={{ height: '100vh', overflow: 'auto' }}>
+    <Container ref={containerRef} style={{ height: '100vh', overflow: 'auto', padding: isSmallScreen ? '0 16px' : '0 24px' }}>
       <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h5" gutterBottom>Select a document to edit</Typography>
+        <Typography variant="h5" gutterBottom>
+          Select a document to edit
+        </Typography>
         <TextField
           fullWidth
           label="Search Documents"
@@ -237,7 +258,11 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
             <Box key={doc.id}>
               <ListItem button onClick={() => handleDocumentClick(doc.id)}>
                 <ListItemText
-                  primary={<Typography variant="h6" style={{ fontWeight: 'bold' }}>{doc.name}</Typography>}
+                  primary={
+                    <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+                      {doc.name}
+                    </Typography>
+                  }
                   secondary={
                     <Box>
                       <Typography variant="body2" color="textSecondary">
@@ -249,10 +274,12 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
                     </Box>
                   }
                 />
-                <IconButton onClick={(event) => {
-                  event.stopPropagation();
-                  handleMenuClick(event, doc.id);
-                }}>
+                <IconButton
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handleMenuClick(event, doc.id);
+                  }}
+                >
                   <MoreVertIcon />
                 </IconButton>
               </ListItem>
@@ -260,13 +287,13 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
             </Box>
           ))}
         </List>
-        {loading && <Box display="flex" justifyContent="center" my={2}><CircularProgress /></Box>}
+        {loading && (
+          <Box display="flex" justifyContent="center" my={2}>
+            <CircularProgress />
+          </Box>
+        )}
         {!hasMore && <Typography align="center" my={2}>No more documents to load</Typography>}
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
           <MenuItem onClick={handleViewDocument}>View</MenuItem>
           <MenuItem onClick={handleOpenDeleteDialog}>Delete</MenuItem>
         </Menu>
@@ -276,7 +303,7 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Confirm Delete"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">{'Confirm Delete'}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               Are you sure you want to delete this document? This action cannot be undone.
@@ -286,12 +313,7 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
             <Button onClick={() => setDeleteDialogOpen(false)} color="primary">
               No
             </Button>
-            <Button 
-              onClick={handleDeleteDocument} 
-              color="primary" 
-              autoFocus 
-              disabled={isDeleting}
-            >
+            <Button onClick={handleDeleteDocument} color="primary" autoFocus disabled={isDeleting}>
               {isDeleting ? 'Deleting...' : 'Yes'}
             </Button>
           </DialogActions>
@@ -312,20 +334,18 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClosePreview}>Close</Button>
-            <Button onClick={() => {
-              handleClosePreview();
-              if (previewDocId) onSelectDocument(previewDocId);
-            }} color="primary">
+            <Button
+              onClick={() => {
+                handleClosePreview();
+                if (previewDocId) onSelectDocument(previewDocId);
+              }}
+              color="primary"
+            >
               Open in Editor
             </Button>
           </DialogActions>
         </Dialog>
-        <Snackbar
-          open={snackbarOpen}
-          autoHideDuration={6000}
-          onClose={() => setSnackbarOpen(false)}
-          message={snackbarMessage}
-        />
+        <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)} message={snackbarMessage} />
       </Paper>
     </Container>
   );

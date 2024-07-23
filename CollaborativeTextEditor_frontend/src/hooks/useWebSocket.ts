@@ -9,7 +9,8 @@ const useWebSocket = (
   onUpdate: (content: string) => void,
   onPermissionRevoked: () => void,
   onDocumentDeleted: () => void,
-  onOnlineUsersUpdate: (users: string[]) => void 
+  onOnlineUsersUpdate: (users: string[]) => void,
+  onCursorPositionUpdate: (email: string, index: number, length: number) => void
 ) => {
   const connectionRef = useRef<signalR.HubConnection | null>(null);
   const [isCleaningUp, setIsCleaningUp] = useState(false);
@@ -72,7 +73,11 @@ const useWebSocket = (
       });
 
       connection.on('UpdateOnlineUsers', (users: string[]) => {
-        onOnlineUsersUpdate(users);  // Changed this line
+        onOnlineUsersUpdate(users);
+      });
+
+      connection.on('ReceiveCursorPositionUpdate', (userEmail: string, index: number, length: number) => {
+        onCursorPositionUpdate(userEmail, index, length);
       });
 
       connection.onclose(async () => {

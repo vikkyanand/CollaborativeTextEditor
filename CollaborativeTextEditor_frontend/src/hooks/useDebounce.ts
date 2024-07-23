@@ -7,10 +7,10 @@ import { useCallback, useRef } from 'react';
  * @param delay - The debounce delay in milliseconds.
  * @returns - A debounced version of the callback function.
  */
-const useDebounce = (callback: (value: string) => void, delay: number) => {
+const useDebounce = <T,>(callback: (value: T) => void, delay: number) => {
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const debouncedCallback = useCallback((value: string) => {
+  const debouncedCallback = useCallback((value: T) => {
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
     }
