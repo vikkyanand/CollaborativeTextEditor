@@ -1,10 +1,38 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import CustomQuill from './CustomQuill';
-import { Container, Paper, Box, Button, Modal, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, IconButton, Typography } from '@mui/material';
-import { Save as SaveIcon, Visibility as VisibilityIcon, VisibilityOff as VisibilityOffIcon, People as PeopleIcon, Share as ShareIcon, Close as CloseIcon } from '@mui/icons-material';
+import {
+  Container,
+  Paper,
+  Box,
+  Button,
+  Modal,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Snackbar,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
+import {
+  Save as SaveIcon,
+  Visibility as VisibilityIcon,
+  VisibilityOff as VisibilityOffIcon,
+  People as PeopleIcon,
+  Share as ShareIcon,
+  Close as CloseIcon,
+} from '@mui/icons-material';
 import DocumentNameInput from './DocumentNameInput';
 import PermissionManager from './PermissionManager';
-import { saveDocument, createDocument, fetchDocumentContent, getPermissionsByDocumentId } from '../services/api';
+import {
+  saveDocument,
+  createDocument,
+  fetchDocumentContent,
+  getPermissionsByDocumentId,
+} from '../services/api';
 import useDebounce from '../hooks/useDebounce';
 import useWebSocket from '../hooks/useWebSocket';
 import * as signalR from '@microsoft/signalr';
@@ -20,7 +48,14 @@ interface EditorProps {
   preview?: boolean;
 }
 
-const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, email, preview = false }) => {
+const Editor: React.FC<EditorProps> = ({
+  documentId,
+  onBack,
+  canWrite,
+  userId,
+  email,
+  preview = false,
+}) => {
   const [content, setContent] = useState('');
   const [documentName, setDocumentName] = useState('');
   const [permissions, setPermissions] = useState<{ email: string; canWrite: boolean }[]>([]);
@@ -32,11 +67,14 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [cursorPositions, setCursorPositions] = useState<{ email: string, index: number, length: number }[]>([]);
+  const [cursorPositions, setCursorPositions] = useState<{ email: string; index: number; length: number }[]>([]);
   const [isEditorFocused, setIsEditorFocused] = useState(false);
   const navigate = useNavigate();
   const validDocumentId = currentDocumentId || '';
   const quillRef = useRef<any>(null);
+
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handlePermissionRevoked = () => {
     setDialogOpen(true);
@@ -71,8 +109,8 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     handleDocumentDeleted,
     (users: string[]) => setOnlineUsers(users),
     (email: string, index: number, length: number) => {
-      setCursorPositions(prev => {
-        const newPositions = prev.filter(p => p.email !== email);
+      setCursorPositions((prev) => {
+        const newPositions = prev.filter((p) => p.email !== email);
         return [...newPositions, { email, index, length }];
       });
     }
@@ -86,10 +124,12 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         setDocumentName(response.name);
         if (!preview) {
           const perms = await getPermissionsByDocumentId(currentDocumentId);
-          setPermissions(perms.map((perm: { email: string; canWrite: boolean }) => ({
-            email: decodeEmail(perm.email),
-            canWrite: perm.canWrite,
-          })));
+          setPermissions(
+            perms.map((perm: { email: string; canWrite: boolean }) => ({
+              email: decodeEmail(perm.email),
+              canWrite: perm.canWrite,
+            }))
+          );
         }
       })();
     }
@@ -131,7 +171,8 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
 
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       logger.log('Sending document update via WebSocket');
-      connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, content)
+      connectionRef.current
+        .invoke('SendDocumentUpdate', validDocumentId, content)
         .catch((err) => console.log('Error sending document update:', err));
     }
   }, [canWrite, content, currentDocumentId, documentName, connectionRef, validDocumentId]);
@@ -156,19 +197,21 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
     console.log('Content changed:', newContent);
     setContent(newContent);
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
-      connectionRef.current.invoke('SendDocumentUpdate', validDocumentId, newContent)
+      connectionRef.current
+        .invoke('SendDocumentUpdate', validDocumentId, newContent)
         .catch((err) => console.log('Error sending document update:', err));
     }
   }, 100);
 
-  const handleCursorPositionChange = useDebounce((range: { index: number, length: number } | null) => {
+  const handleCursorPositionChange = useDebounce((range: { index: number; length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       if (range) {
-        connectionRef.current.invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
+        connectionRef.current
+          .invoke('UpdateCursorPosition', validDocumentId, range.index, range.length)
           .catch((err) => console.log('Error sending cursor position:', err));
       } else {
-        // Send a special signal to indicate cursor should be hidden
-        connectionRef.current.invoke('HideCursor', validDocumentId)
+        connectionRef.current
+          .invoke('HideCursor', validDocumentId)
           .catch((err) => console.log('Error hiding cursor:', err));
       }
     }
@@ -177,7 +220,8 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   useEffect(() => {
     return () => {
       if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
-        connectionRef.current.invoke('LeaveDocumentGroup', validDocumentId)
+        connectionRef.current
+          .invoke('LeaveDocumentGroup', validDocumentId)
           .catch((err) => console.error('Error leaving document group:', err));
       }
     };
@@ -204,16 +248,31 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
   };
 
   return (
-    <Container maxWidth="lg" style={{ height: preview ? 'auto' : '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <Container
+      maxWidth="lg"
+      style={{
+        height: preview ? 'auto' : '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        padding: isSmallScreen ? '0 16px' : '0 24px',
+      }}
+    >
       {!preview && (
-        <Box display="flex" justifyContent="flex-end" alignItems="center" mb={2}>
+        <Box
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center"
+          flexWrap="wrap"
+          mb={2}
+        >
           {canWrite && (
             <Button
               variant="contained"
               color="primary"
               startIcon={<SaveIcon />}
               onClick={handleSave}
-              style={{ marginRight: '10px' }}
+              style={{ margin: '8px 10px 8px 0' }}
             >
               Save
             </Button>
@@ -223,7 +282,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             color="secondary"
             onClick={() => setShowPermissions(!showPermissions)}
             startIcon={showPermissions ? <VisibilityOffIcon /> : <VisibilityIcon />}
-            style={{ marginRight: '10px' }}
+            style={{ margin: '8px 10px 8px 0' }}
           >
             {showPermissions ? 'Hide Permissions' : 'Show Permissions'}
           </Button>
@@ -231,7 +290,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             variant="contained"
             onClick={() => setShowOnlineUsers(!showOnlineUsers)}
             startIcon={<PeopleIcon />}
-            style={{ marginRight: '10px' }}
+            style={{ margin: '8px 10px 8px 0' }}
           >
             {showOnlineUsers ? 'Hide Online Users' : 'Show Online Users'}
           </Button>
@@ -239,12 +298,22 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             variant="contained"
             onClick={handleShare}
             startIcon={<ShareIcon />}
+            style={{ margin: '8px 10px 8px 0' }}
           >
             Share
           </Button>
         </Box>
       )}
-      <Paper style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <Paper
+        style={{
+          flex: 1,
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
         {!preview && (
           <DocumentNameInput
             documentName={documentName}
@@ -252,7 +321,15 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
             canWrite={canWrite}
           />
         )}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: '20px', position: 'relative' }}>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            paddingBottom: '20px',
+            position: 'relative',
+          }}
+        >
           <CustomQuill
             ref={quillRef}
             value={content}
@@ -266,35 +343,62 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         </div>
       </Paper>
       <Modal open={showPermissions} onClose={() => setShowPermissions(false)}>
-        <Box component="div" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, backgroundColor: 'white', padding: '20px', boxShadow: '24px' }}>
+        <Box
+          component="div"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            backgroundColor: 'white',
+            padding: '20px',
+            boxShadow: '24px',
+          }}
+        >
           <PermissionManager
             documentId={currentDocumentId || ''}
             canWrite={canWrite}
             userId={userId}
             onPermissionChange={handlePermissionChange}
           />
-          <IconButton style={{ position: 'absolute', top: '10px', right: '10px' }} onClick={() => setShowPermissions(false)}>
+          <IconButton
+            style={{ position: 'absolute', top: '10px', right: '10px' }}
+            onClick={() => setShowPermissions(false)}
+          >
             <CloseIcon />
           </IconButton>
         </Box>
       </Modal>
       <Modal open={showOnlineUsers} onClose={() => setShowOnlineUsers(false)}>
-        <Box component="div" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, backgroundColor: 'white', padding: '20px', boxShadow: '24px' }}>
+        <Box
+          component="div"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            backgroundColor: 'white',
+            padding: '20px',
+            boxShadow: '24px',
+          }}
+        >
           <Typography variant="h6">Online Users</Typography>
           <ul>
             {onlineUsers.map((user, index) => (
               <li key={index}>{user}</li>
             ))}
           </ul>
-          <IconButton style={{ position: 'absolute', top: '10px', right: '10px' }} onClick={() => setShowOnlineUsers(false)}>
+          <IconButton
+            style={{ position: 'absolute', top: '10px', right: '10px' }}
+            onClick={() => setShowOnlineUsers(false)}
+          >
             <CloseIcon />
           </IconButton>
         </Box>
       </Modal>
-      <Dialog
-        open={dialogOpen}
-        onClose={handleCloseDialog}
-      >
+      <Dialog open={dialogOpen} onClose={handleCloseDialog}>
         <DialogTitle>Permission Revoked</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -307,10 +411,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog
-        open={deleteDialogOpen}
-        onClose={handleCloseDeleteDialog}
-      >
+      <Dialog open={deleteDialogOpen} onClose={handleCloseDeleteDialog}>
         <DialogTitle>Document Deleted</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -330,7 +431,7 @@ const Editor: React.FC<EditorProps> = ({ documentId, onBack, canWrite, userId, e
         message={notification}
         ContentProps={{
           style: {
-            backgroundColor: 'white', 
+            backgroundColor: 'white',
             color: 'black',
           },
         }}
