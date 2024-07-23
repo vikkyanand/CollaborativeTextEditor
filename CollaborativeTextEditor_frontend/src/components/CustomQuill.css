@@ -1,0 +1,27 @@
+/* CustomQuill.css */
+.cursor-overlay {
+    position: absolute;
+    pointer-events: none;
+    background-color: rgba(0, 123, 255, 0.8); /* Blue background for the email */
+    color: white; /* White text color */
+    font-size: 10px; /* Adjust font size */
+    padding: 2px 5px;
+    border-radius: 3px;
+    z-index: 10; /* Ensure it's above the text */
+    white-space: nowrap; /* Ensure the entire email is visible */
+    transform: translateY(-100%); /* Position above the line */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Fade-in and fade-out effect */
+  }
+  
+  .cursor-overlay.show {
+    opacity: 1;
+  }
+  
+  .cursor-marker {
+    position: absolute;
+    width: 2px;
+    background-color: rgba(0, 123, 255, 1); /* Blue color for the cursor */
+    z-index: 10; /* Ensure it's above the text */
+  }
+  
