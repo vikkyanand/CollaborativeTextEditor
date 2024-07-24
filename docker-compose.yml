@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     container_name: cte_backend
-    image: cte_backend
+    image: ghcr.io/vikkyanand/cte_backend:latest
     ports:
       - "8080:8080"
     depends_on:
@@ -18,7 +18,7 @@ services:
 
   frontend:
     container_name: cte_frontend
-    image: cte_frontend
+    image: ghcr.io/vikkyanand/cte_frontend:latest
     ports:
       - "3000:80"
     depends_on:
