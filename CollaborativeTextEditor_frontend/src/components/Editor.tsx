@@ -16,6 +16,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Grid,
 } from '@mui/material';
 import {
   Save as SaveIcon,
@@ -75,6 +76,7 @@ const Editor: React.FC<EditorProps> = ({
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   const handlePermissionRevoked = () => {
     setDialogOpen(true);
@@ -255,53 +257,61 @@ const Editor: React.FC<EditorProps> = ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        padding: isSmallScreen ? '0 16px' : '0 24px',
+        padding: '0 24px',
       }}
     >
       {!preview && (
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          alignItems="center"
-          flexWrap="wrap"
-          mb={2}
-        >
-          {canWrite && (
-            <Button
-              variant="contained"
-              color="primary"
-              startIcon={<SaveIcon />}
-              onClick={handleSave}
-              style={{ margin: '8px 10px 8px 0' }}
-            >
-              Save
-            </Button>
-          )}
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setShowPermissions(!showPermissions)}
-            startIcon={showPermissions ? <VisibilityOffIcon /> : <VisibilityIcon />}
-            style={{ margin: '8px 10px 8px 0' }}
-          >
-            {showPermissions ? 'Hide Permissions' : 'Show Permissions'}
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => setShowOnlineUsers(!showOnlineUsers)}
-            startIcon={<PeopleIcon />}
-            style={{ margin: '8px 10px 8px 0' }}
-          >
-            {showOnlineUsers ? 'Hide Online Users' : 'Show Online Users'}
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleShare}
-            startIcon={<ShareIcon />}
-            style={{ margin: '8px 10px 8px 0' }}
-          >
-            Share
-          </Button>
+        <Box mt={7} mb={2}> {/* Increased top margin to avoid overlap with back button */}
+          <Grid container spacing={1} justifyContent="flex-end">
+            {canWrite && (
+              <Grid item xs={12} sm={6} md={3}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<SaveIcon />}
+                  onClick={handleSave}
+                  fullWidth
+                  style={{ minWidth: '120px' }}
+                >
+                  Save
+                </Button>
+              </Grid>
+            )}
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => setShowPermissions(!showPermissions)}
+                startIcon={showPermissions ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                fullWidth
+                style={{ minWidth: '120px' }}
+              >
+                {showPermissions ? 'Hide Permissions' : 'Show Permissions'}
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                onClick={() => setShowOnlineUsers(!showOnlineUsers)}
+                startIcon={<PeopleIcon />}
+                fullWidth
+                style={{ minWidth: '120px' }}
+              >
+                {showOnlineUsers ? 'Hide Online Users' : 'Show Online Users'}
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                onClick={handleShare}
+                startIcon={<ShareIcon />}
+                fullWidth
+                style={{ minWidth: '120px' }}
+              >
+                Share
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       )}
       <Paper

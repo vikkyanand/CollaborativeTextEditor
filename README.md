@@ -49,6 +49,21 @@ docker-compose up --build
 
 This command will build and start the backend, frontend, MongoDB, and RabbitMQ services.
 
+## Pull and Run Docker Containers
+
+```bash
+docker pull ghcr.io/vikkyanand/cte_backend:latest
+docker pull ghcr.io/vikkyanand/cte_frontend:latest
+docker pull mongo:latest
+docker pull rabbitmq:3-management
+```
+
+After pulling the images, you can run the containers using:
+
+```bash
+docker-compose up -d
+```
+
 ## Access the Application
 
 - **Frontend:** [http://localhost:3000](http://localhost:3000)
@@ -61,16 +76,15 @@ This project uses GitHub Actions for CI/CD. The workflow file is located at `.gi
 
 ### GitHub Actions Workflow
 
-- **build-and-push-backend:** Builds and pushes the backend Docker image to Docker Hub.
-- **build-and-push-frontend:** Builds and pushes the frontend Docker image to Docker Hub.
-- **deploy:** Pulls the latest Docker images and deploys the application using Docker Compose.
+- **build-and-push-backend:** Builds and pushes the backend Docker image to GitHub Container Registry (GHCR).
+- **build-and-push-frontend:** Builds and pushes the frontend Docker image to GitHub Container Registry (GHCR).
+- **deploy:** Pulls the latest Docker images from GHCR and deploys the application using Docker Compose.
 
 ### Secrets
 
 Ensure the following secrets are added to your GitHub repository:
 
-- `DOCKER_USERNAME`: Your Docker Hub username.
-- `DOCKER_PASSWORD`: Your Docker Hub password.
+- `GHCR_PAT`: Your GitHub Personal Access Token with `repo`, `write:packages`, and `read:packages` scopes.
 
 ## Development
 
