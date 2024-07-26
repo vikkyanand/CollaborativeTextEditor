@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   getDocumentsWithUserPermission,
   deleteDocument,
@@ -28,7 +29,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { MoreVert as MoreVertIcon } from '@mui/icons-material';
+import { ArrowBack as ArrowBackIcon, MoreVert as MoreVertIcon } from '@mui/icons-material';
 import debounce from 'lodash/debounce';
 import Editor from './Editor';
 import { logger } from '../logger';
@@ -47,6 +48,7 @@ interface Document {
 }
 
 const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenied, userId }) => {
+  const navigate = useNavigate();
   const [documents, setDocuments] = useState<Document[]>([]);
   const [skip, setSkip] = useState(0);
   const [search, setSearch] = useState('');
@@ -241,113 +243,127 @@ const FileList: React.FC<FileListProps> = ({ onSelectDocument, onPermissionDenie
   };
 
   return (
-    <Container ref={containerRef} style={{ height: '100vh', overflow: 'auto', padding: isSmallScreen ? '0 16px' : '0 24px' }}>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h5" gutterBottom>
-          Select a document to edit
-        </Typography>
-        <TextField
-          fullWidth
-          label="Search Documents"
-          onChange={handleSearchChange}
-          placeholder="Search by document name"
-          margin="normal"
-        />
-        <List>
-          {documents.map((doc) => (
-            <Box key={doc.id}>
-              <ListItem button onClick={() => handleDocumentClick(doc.id)}>
-                <ListItemText
-                  primary={
-                    <Typography variant="h6" style={{ fontWeight: 'bold' }}>
-                      {doc.name}
-                    </Typography>
-                  }
-                  secondary={
-                    <Box>
-                      <Typography variant="body2" color="textSecondary">
-                        Created: {new Date(doc.dateCreated).toLocaleString()}
+    <div style={{ position: 'relative', paddingTop: '50px' }}>
+      <IconButton
+        color="primary"
+        onClick={() => navigate('/home')}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          left: '10px',
+          zIndex: 1,
+        }}
+      >
+        <ArrowBackIcon />
+      </IconButton>
+      <Container ref={containerRef} style={{ height: 'calc(100vh - 50px)', overflow: 'auto', padding: isSmallScreen ? '0 16px' : '0 24px' }}>
+        <Paper elevation={3} style={{ padding: '20px' }}>
+          <Typography variant="h5" gutterBottom>
+            Select a document to edit
+          </Typography>
+          <TextField
+            fullWidth
+            label="Search Documents"
+            onChange={handleSearchChange}
+            placeholder="Search by document name"
+            margin="normal"
+          />
+          <List>
+            {documents.map((doc) => (
+              <Box key={doc.id}>
+                <ListItem button onClick={() => handleDocumentClick(doc.id)}>
+                  <ListItemText
+                    primary={
+                      <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+                        {doc.name}
                       </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        Last Edited: {new Date(doc.lastEditedDate).toLocaleString()}
-                      </Typography>
-                    </Box>
-                  }
-                />
-                <IconButton
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    handleMenuClick(event, doc.id);
-                  }}
-                >
-                  <MoreVertIcon />
-                </IconButton>
-              </ListItem>
-              <Divider component="li" />
+                    }
+                    secondary={
+                      <Box>
+                        <Typography variant="body2" color="textSecondary">
+                          Created: {new Date(doc.dateCreated).toLocaleString()}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                          Last Edited: {new Date(doc.lastEditedDate).toLocaleString()}
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                  <IconButton
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleMenuClick(event, doc.id);
+                    }}
+                  >
+                    <MoreVertIcon />
+                  </IconButton>
+                </ListItem>
+                <Divider component="li" />
+              </Box>
+            ))}
+          </List>
+          {loading && (
+            <Box display="flex" justifyContent="center" my={2}>
+              <CircularProgress />
             </Box>
-          ))}
-        </List>
-        {loading && (
-          <Box display="flex" justifyContent="center" my={2}>
-            <CircularProgress />
-          </Box>
-        )}
-        {!hasMore && <Typography align="center" my={2}>No more documents to load</Typography>}
-        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-          <MenuItem onClick={handleViewDocument}>View</MenuItem>
-          <MenuItem onClick={handleOpenDeleteDialog}>Delete</MenuItem>
-        </Menu>
-        <Dialog
-          open={deleteDialogOpen}
-          onClose={() => setDeleteDialogOpen(false)}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{'Confirm Delete'}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Are you sure you want to delete this document? This action cannot be undone.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setDeleteDialogOpen(false)} color="primary">
-              No
-            </Button>
-            <Button onClick={handleDeleteDocument} color="primary" autoFocus disabled={isDeleting}>
-              {isDeleting ? 'Deleting...' : 'Yes'}
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog open={previewOpen} onClose={handleClosePreview} maxWidth="md" fullWidth>
-          <DialogTitle>Document Preview</DialogTitle>
-          <DialogContent>
-            {previewDocId && (
-              <Editor
-                documentId={previewDocId}
-                onBack={handleClosePreview}
-                canWrite={false}
-                userId={userId}
-                email=""
-                preview={true}
-              />
-            )}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClosePreview}>Close</Button>
-            <Button
-              onClick={() => {
-                handleClosePreview();
-                if (previewDocId) onSelectDocument(previewDocId);
-              }}
-              color="primary"
-            >
-              Open in Editor
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)} message={snackbarMessage} />
-      </Paper>
-    </Container>
+          )}
+          {!hasMore && <Typography align="center" my={2}>No more documents to load</Typography>}
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+            <MenuItem onClick={handleViewDocument}>View</MenuItem>
+            <MenuItem onClick={handleOpenDeleteDialog}>Delete</MenuItem>
+          </Menu>
+          <Dialog
+            open={deleteDialogOpen}
+            onClose={() => setDeleteDialogOpen(false)}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{'Confirm Delete'}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Are you sure you want to delete this document? This action cannot be undone.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setDeleteDialogOpen(false)} color="primary">
+                No
+              </Button>
+              <Button onClick={handleDeleteDocument} color="primary" autoFocus disabled={isDeleting}>
+                {isDeleting ? 'Deleting...' : 'Yes'}
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Dialog open={previewOpen} onClose={handleClosePreview} maxWidth="md" fullWidth>
+            <DialogTitle>Document Preview</DialogTitle>
+            <DialogContent>
+              {previewDocId && (
+                <Editor
+                  documentId={previewDocId}
+                  onBack={handleClosePreview}
+                  canWrite={false}
+                  userId={userId}
+                  email=""
+                  preview={true}
+                />
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClosePreview}>Close</Button>
+              <Button
+                onClick={() => {
+                  handleClosePreview();
+                  if (previewDocId) onSelectDocument(previewDocId);
+                }}
+                color="primary"
+              >
+                Open in Editor
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)} message={snackbarMessage} />
+        </Paper>
+      </Container>
+    </div>
   );
 };
 

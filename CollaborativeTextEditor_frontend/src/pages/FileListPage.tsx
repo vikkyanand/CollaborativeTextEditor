@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IconButton } from '@mui/material';
-import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import FileList from '../components/FileList';
 import { getPermissionsByDocumentId } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { logger } from '../logger';
 
-// FileListPage component definition
 const FileListPage: React.FC = () => {
   const navigate = useNavigate();
   const { userId, email } = useAuth();
@@ -15,14 +12,12 @@ const FileListPage: React.FC = () => {
   const [canWrite, setCanWrite] = useState<boolean>(false);
   const [currentView, setCurrentView] = useState<string>('fileList');
 
-  // Redirect to home if userId or email is missing
   useEffect(() => {
     if (!userId || !email) {
       navigate('/');
     }
   }, [userId, email, navigate]);
 
-  // Handle selecting a document and checking permissions
   const handleSelectDocument = async (documentId: string) => {
     if (userId) {
       try {
@@ -48,21 +43,12 @@ const FileListPage: React.FC = () => {
     }
   };
 
-  // Handle permission denied action
   const handlePermissionDenied = (message: string) => {
     alert(message);
   };
 
-  // Render the component
   return (
     <div>
-      <IconButton
-        color="primary"
-        onClick={() => navigate('/home')}
-        style={{ position: 'absolute', top: '10px', left: '10px' }}
-      >
-        <ArrowBackIcon />
-      </IconButton>
       {userId && (
         <FileList
           onSelectDocument={handleSelectDocument}
