@@ -17,6 +17,8 @@ import {
   useMediaQuery,
   useTheme,
   Grid,
+  Menu,
+  MenuItem,
 } from '@mui/material';
 import {
   Save as SaveIcon,
@@ -25,6 +27,8 @@ import {
   People as PeopleIcon,
   Share as ShareIcon,
   Close as CloseIcon,
+  FileDownload as FileDownloadIcon,
+  FileUpload as FileUploadIcon,
 } from '@mui/icons-material';
 import DocumentNameInput from './DocumentNameInput';
 import PermissionManager from './PermissionManager';
@@ -39,6 +43,9 @@ import useWebSocket from '../hooks/useWebSocket';
 import * as signalR from '@microsoft/signalr';
 import { useNavigate } from 'react-router-dom';
 import { logger } from '../logger';
+import { Document, Packer, Paragraph } from 'docx';
+import { jsPDF } from 'jspdf';
+import mammoth from 'mammoth';
 
 interface EditorProps {
   documentId?: string | null;
@@ -70,6 +77,8 @@ const Editor: React.FC<EditorProps> = ({
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [cursorPositions, setCursorPositions] = useState<{ email: string; index: number; length: number }[]>([]);
   const [isEditorFocused, setIsEditorFocused] = useState(false);
+  const [downloadAnchorEl, setDownloadAnchorEl] = useState<null | HTMLElement>(null);
+  const [uploadAnchorEl, setUploadAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
   const validDocumentId = currentDocumentId || '';
   const quillRef = useRef<any>(null);
@@ -249,6 +258,90 @@ const Editor: React.FC<EditorProps> = ({
     setSnackbarOpen(true);
   };
 
+  const handleDownloadMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setDownloadAnchorEl(event.currentTarget);
+  };
+
+  const handleUploadMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setUploadAnchorEl(event.currentTarget);
+  };
+
+  const handleDownloadMenuClose = () => {
+    setDownloadAnchorEl(null);
+  };
+
+  const handleUploadMenuClose = () => {
+    setUploadAnchorEl(null);
+  };
+
+  const handleDownloadTxt = () => {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${documentName || 'document'}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setNotification('Document downloaded successfully.');
+    setSnackbarOpen(true);
+  };
+
+  const handleDownloadDoc = async () => {
+    const doc = new Document({
+      sections: [
+        {
+          children: [new Paragraph(content)],
+        },
+      ],
+    });
+    const blob = await Packer.toBlob(doc);
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${documentName || 'document'}.docx`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setNotification('Document downloaded successfully.');
+    setSnackbarOpen(true);
+  };
+
+  const handleDownloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text(content, 10, 10);
+    doc.save(`${documentName || 'document'}.pdf`);
+    setNotification('Document downloaded successfully.');
+    setSnackbarOpen(true);
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const fileType = file.name.split('.').pop();
+        if (fileType === 'txt') {
+          setContent(reader.result as string);
+          setNotification('TXT Document uploaded successfully.');
+        } else if (fileType === 'doc' || fileType === 'docx') {
+          const arrayBuffer = reader.result as ArrayBuffer;
+          const { value: text } = await mammoth.extractRawText({ arrayBuffer });
+          setContent(text);
+          setNotification('DOC Document uploaded successfully.');
+        } else {
+          setNotification('Unsupported file format.');
+        }
+        setSnackbarOpen(true);
+      };
+      if (file.type === 'text/plain') {
+        reader.readAsText(file);
+      } else {
+        reader.readAsArrayBuffer(file);
+      }
+    }
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -261,7 +354,7 @@ const Editor: React.FC<EditorProps> = ({
       }}
     >
       {!preview && (
-        <Box mt={7} mb={2}> {/* Increased top margin to avoid overlap with back button */}
+        <Box mt={7} mb={2}>
           <Grid container spacing={1} justifyContent="flex-end">
             {canWrite && (
               <Grid item xs={12} sm={6} md={3}>
@@ -310,6 +403,73 @@ const Editor: React.FC<EditorProps> = ({
               >
                 Share
               </Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                onClick={handleDownloadMenuOpen}
+                startIcon={<FileDownloadIcon />}
+                fullWidth
+                style={{ minWidth: '120px' }}
+              >
+                Download
+              </Button>
+              <Menu
+                anchorEl={downloadAnchorEl}
+                open={Boolean(downloadAnchorEl)}
+                onClose={handleDownloadMenuClose}
+              >
+<MenuItem onClick={() => { handleDownloadTxt(); handleDownloadMenuClose(); }}>
+                  <FileDownloadIcon /> Download as TXT
+                </MenuItem>
+                <MenuItem onClick={() => { handleDownloadDoc(); handleDownloadMenuClose(); }}>
+                  <FileDownloadIcon /> Download as DOC
+                </MenuItem>
+                <MenuItem onClick={() => { handleDownloadPdf(); handleDownloadMenuClose(); }}>
+                  <FileDownloadIcon /> Download as PDF
+                </MenuItem>
+              </Menu>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <Button
+                variant="contained"
+                onClick={handleUploadMenuOpen}
+                startIcon={<FileUploadIcon />}
+                fullWidth
+                style={{ minWidth: '120px' }}
+              >
+                Upload
+              </Button>
+              <Menu
+                anchorEl={uploadAnchorEl}
+                open={Boolean(uploadAnchorEl)}
+                onClose={handleUploadMenuClose}
+              >
+                <MenuItem>
+                  <input
+                    type="file"
+                    accept=".txt"
+                    style={{ display: 'none' }}
+                    id="txt-upload"
+                    onChange={(e) => { handleFileUpload(e); handleUploadMenuClose(); }}
+                  />
+                  <label htmlFor="txt-upload">
+                    <FileUploadIcon /> Upload TXT
+                  </label>
+                </MenuItem>
+                <MenuItem>
+                  <input
+                    type="file"
+                    accept=".doc,.docx"
+                    style={{ display: 'none' }}
+                    id="doc-upload"
+                    onChange={(e) => { handleFileUpload(e); handleUploadMenuClose(); }}
+                  />
+                  <label htmlFor="doc-upload">
+                    <FileUploadIcon /> Upload DOC/DOCX
+                  </label>
+                </MenuItem>
+              </Menu>
             </Grid>
           </Grid>
         </Box>
