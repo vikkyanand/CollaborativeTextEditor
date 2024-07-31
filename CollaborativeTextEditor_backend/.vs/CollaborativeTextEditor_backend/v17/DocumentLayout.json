@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\rabbitmq\\rabbitmqconsumer.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,11 +138,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
               "RelativeDocumentMoniker": "PresentationLayer\\appsettings.json",
@@ -154,11 +150,12 @@
               "RelativeToolTip": "PresentationLayer\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-07T06:27:45.805Z"
+              "WhenOpened": "2024-07-07T06:27:45.805Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "RabbitMqConsumer.cs.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
               "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
@@ -170,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "WebSocketHub.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
               "RelativeDocumentMoniker": "DataLayer\\SignalR\\WebSocketHub.cs",
@@ -183,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "INotificationService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\INotificationService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\INotificationService.cs",
@@ -195,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "DocumentService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\DocumentService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\DocumentService.cs",
@@ -207,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Program.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Program.cs",
@@ -219,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "DocumentsController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\DocumentsController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\DocumentsController.cs",
@@ -231,19 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "PresentationLayer\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Properties\\launchSettings.json",
-              "RelativeToolTip": "PresentationLayer\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-17T13:27:42.858Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "RabbitMqPublisher.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
               "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
@@ -255,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "PermissionService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\PermissionService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\PermissionService.cs",
@@ -267,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "PermissionsController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\PermissionsController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\PermissionsController.cs",
@@ -279,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "DocumentRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\DocumentRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\DocumentRepository.cs",
@@ -291,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "PermissionRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\PermissionRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\PermissionRepository.cs",
@@ -303,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "PresentationLayer",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
               "RelativeDocumentMoniker": "PresentationLayer\\PresentationLayer.csproj",
@@ -314,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\UserService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\UserService.cs",
@@ -326,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "MongoDbContext.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\MongoDbContext.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\MongoDbContext.cs",
@@ -338,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\UserRepository.cs",
               "RelativeDocumentMoniker": "DataLayer\\Data\\UserRepository.cs",
@@ -350,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\UsersController.cs",
@@ -362,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
@@ -374,7 +359,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "IPermissionRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
@@ -386,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "IDocumentRepository.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
@@ -398,7 +383,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\User.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\User.cs",
@@ -410,7 +395,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "Permission.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Permission.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\Permission.cs",
@@ -422,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "Document.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Document.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\Document.cs",
@@ -434,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "DatabaseSettings.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
@@ -446,7 +431,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\User.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\User.cs",
@@ -458,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "Permission.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Permission.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\Permission.cs",
@@ -470,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "Document.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Document.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\Document.cs",
@@ -482,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 27,
               "Title": "DatabaseSettings.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
@@ -494,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "UserRequest.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UserRequest.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\UserRequest.cs",
@@ -506,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "UpdateContentRequest.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
@@ -518,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "PermissionRequest.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
@@ -530,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 31,
               "Title": "CreateDocumentRequest.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",

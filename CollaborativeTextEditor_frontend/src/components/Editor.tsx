@@ -274,8 +274,18 @@ const Editor: React.FC<EditorProps> = ({
     setUploadAnchorEl(null);
   };
 
+  const stripHtml = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const textWithNewlines = doc.body.innerHTML
+      .replace(/<br\s*\/?>/gi, '\n') // Replace <br> tags with newline
+      .replace(/<\/(p|div|h[1-6]|li|ul|ol)>/gi, '\n'); // Replace closing tags of block elements with newline
+    const strippedText = new DOMParser().parseFromString(textWithNewlines, 'text/html').body.textContent || "";
+    return strippedText;
+  };
+
   const handleDownloadTxt = () => {
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const plainTextContent = stripHtml(content);
+    const blob = new Blob([plainTextContent], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -309,7 +319,7 @@ const Editor: React.FC<EditorProps> = ({
 
   const handleDownloadPdf = () => {
     const doc = new jsPDF();
-    doc.text(content, 10, 10);
+    doc.text(stripHtml(content), 10, 10);
     doc.save(`${documentName || 'document'}.pdf`);
     setNotification('Document downloaded successfully.');
     setSnackbarOpen(true);
