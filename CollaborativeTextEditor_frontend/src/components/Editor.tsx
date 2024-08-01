@@ -203,7 +203,7 @@ const Editor: React.FC<EditorProps> = ({
         .invoke('SendDocumentUpdate', validDocumentId, newContent)
         .catch((err) => console.log('Error sending document update:', err));
     }
-  }, 500);
+  }, 2000);
 
   const handleCursorPositionChange = useDebounce((range: { index: number; length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
@@ -217,7 +217,7 @@ const Editor: React.FC<EditorProps> = ({
           .catch((err) => console.log('Error hiding cursor:', err));
       }
     }
-  }, 500);
+  }, 2000);
 
   useEffect(() => {
     return () => {
@@ -231,15 +231,35 @@ const Editor: React.FC<EditorProps> = ({
 
   const handleShare = () => {
     const shareLink = `${window.location.origin}/editor/${currentDocumentId}`;
-    navigator.clipboard.writeText(shareLink)
-      .then(() => {
+
+    // Check if clipboard API is supported
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareLink)
+        .then(() => {
+          setNotification('Sharable link is copied to clipboard.');
+          setSnackbarOpen(true);
+        })
+        .catch((err) => {
+          console.error('Failed to copy share link:', err);
+          alert('Failed to copy the link. Please try again.');
+        });
+    } else {
+      // Fallback for unsupported environments
+      const textArea = document.createElement('textarea');
+      textArea.value = shareLink;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
         setNotification('Sharable link is copied to clipboard.');
         setSnackbarOpen(true);
-      })
-      .catch((err) => {
-        console.error('Failed to copy share link:', err);
+      } catch (err) {
+        console.error('Fallback: Failed to copy share link:', err);
         alert('Failed to copy the link. Please try again.');
-      });
+      } finally {
+        document.body.removeChild(textArea);
+      }
+    }
   };
 
   const handlePermissionChange = (email: string, canWrite: boolean, action: 'granted' | 'revoked') => {
