@@ -26,6 +26,32 @@ EmptyLine.blotName = 'emptyLine';
 EmptyLine.tagName = 'P';
 Quill.register(EmptyLine, true);
 
+// Custom module for handling enter key
+class CustomModule {
+  quill: any;
+  options: any;
+
+  constructor(quill: any, options: any) {
+    this.quill = quill;
+    this.options = options;
+    this.quill.keyboard.addBinding({ key: Quill.import('modules/keyboard').keys.ENTER }, this.enterHandler.bind(this));
+  }
+
+  enterHandler(range: Range | null, context: any) {
+    if (!range) return true;
+    const lastChar = this.quill.getText(range.index - 1, 1);
+    const isAtLineEnd = lastChar === '\n' || range.index === this.quill.getLength() - 1;
+    if (isAtLineEnd) {
+      this.quill.insertEmbed(range.index, 'emptyLine', true);
+      this.quill.setSelection(range.index + 1, 0);
+      return false;
+    }
+    return true;
+  }
+}
+
+Quill.register('modules/customModule', CustomModule);
+
 const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -43,6 +69,15 @@ const modules = {
   ],
   clipboard: {
     matchVisual: false,
+  },
+  customModule: true,
+  keyboard: {
+    bindings: {
+      enter: {
+        key: Quill.import('modules/keyboard').keys.ENTER,
+        handler: function () { return true; }
+      }
+    }
   }
 };
 
@@ -73,20 +108,26 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
   const quillRef = useRef<ReactQuill>(null);
   const cursorOverlaysRef = useRef<{ [email: string]: { overlay: HTMLDivElement, marker: HTMLDivElement, timer?: NodeJS.Timeout } }>({});
   const isLocalChange = useRef(false);
+  const latestContentRef = useRef(value);
 
   useImperativeHandle(ref, () => quillRef.current as ReactQuill);
 
   const handleChange = useCallback((content: string, _delta: any, _source: string, editor: UnprivilegedEditor) => {
     if (!isLocalChange.current) {
       isLocalChange.current = true;
+      latestContentRef.current = content;
       onChange(content);
       isLocalChange.current = false;
     }
   }, [onChange]);
 
-  const handleSelectionChange = useCallback((range: Range | null) => {
-    onCursorPositionChange(range ? { index: range.index, length: range.length } : null);
-  }, [onCursorPositionChange]);
+  const handleSelectionChange = useCallback((range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
+    if (isEditorFocused && range) {
+      onCursorPositionChange({ index: range.index, length: range.length });
+    } else {
+      onCursorPositionChange(null);
+    }
+  }, [isEditorFocused, onCursorPositionChange]);
 
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
