@@ -203,7 +203,7 @@ const Editor: React.FC<EditorProps> = ({
         .invoke('SendDocumentUpdate', validDocumentId, newContent)
         .catch((err) => console.log('Error sending document update:', err));
     }
-  }, 100);
+  }, 500);
 
   const handleCursorPositionChange = useDebounce((range: { index: number; length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
@@ -217,7 +217,7 @@ const Editor: React.FC<EditorProps> = ({
           .catch((err) => console.log('Error hiding cursor:', err));
       }
     }
-  }, 100);
+  }, 500);
 
   useEffect(() => {
     return () => {
