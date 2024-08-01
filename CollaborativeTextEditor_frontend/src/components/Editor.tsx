@@ -195,7 +195,7 @@ const Editor: React.FC<EditorProps> = ({
 
   const decodeEmail = (encodedEmail: string) => encodedEmail.replace(/__/g, '.');
 
-  const handleContentChange = ((newContent: string) => {
+  const handleContentChange = useDebounce((newContent: string) => {
     console.log('Content changed:', newContent);
     setContent(newContent);
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
@@ -203,9 +203,9 @@ const Editor: React.FC<EditorProps> = ({
         .invoke('SendDocumentUpdate', validDocumentId, newContent)
         .catch((err) => console.log('Error sending document update:', err));
     }
-  });
+  }, 500);
 
-  const handleCursorPositionChange = ((range: { index: number; length: number } | null) => {
+  const handleCursorPositionChange = useDebounce((range: { index: number; length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       if (range) {
         connectionRef.current
@@ -217,7 +217,7 @@ const Editor: React.FC<EditorProps> = ({
           .catch((err) => console.log('Error hiding cursor:', err));
       }
     }
-  });
+  }, 500);
 
   useEffect(() => {
     return () => {

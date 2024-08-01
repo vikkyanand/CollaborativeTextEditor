@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef, useEffect, forwardRef, useImperativeHandle, useCallback } from 'react';
 import ReactQuill, { Quill, Range, UnprivilegedEditor } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import './CustomQuill.css'; // Import custom CSS
+import './CustomQuill.css';
 
 // Custom blot for handling empty lines
 const Block = Quill.import('blots/block');
@@ -26,6 +26,7 @@ EmptyLine.blotName = 'emptyLine';
 EmptyLine.tagName = 'P';
 Quill.register(EmptyLine, true);
 
+// Custom module for handling enter key
 class CustomModule {
   quill: any;
   options: any;
@@ -33,20 +34,15 @@ class CustomModule {
   constructor(quill: any, options: any) {
     this.quill = quill;
     this.options = options;
-
     this.quill.keyboard.addBinding({ key: Quill.import('modules/keyboard').keys.ENTER }, this.enterHandler.bind(this));
   }
 
   enterHandler(range: Range | null, context: any) {
     if (!range) return true;
-
     const lastChar = this.quill.getText(range.index - 1, 1);
     const isAtLineEnd = lastChar === '\n' || range.index === this.quill.getLength() - 1;
-
     if (isAtLineEnd) {
-      // Insert an EmptyLine blot
       this.quill.insertEmbed(range.index, 'emptyLine', true);
-      // Move the cursor to the next line
       this.quill.setSelection(range.index + 1, 0);
       return false;
     }
@@ -100,35 +96,43 @@ interface CustomQuillProps {
   setIsEditorFocused: (focused: boolean) => void;
 }
 
-const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange, readOnly, onCursorPositionChange, cursorPositions, isEditorFocused, setIsEditorFocused }, ref) => {
+const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
+  value,
+  onChange,
+  readOnly,
+  onCursorPositionChange,
+  cursorPositions,
+  isEditorFocused,
+  setIsEditorFocused
+}, ref) => {
   const quillRef = useRef<ReactQuill>(null);
   const cursorOverlaysRef = useRef<{ [email: string]: { overlay: HTMLDivElement, marker: HTMLDivElement, timer?: NodeJS.Timeout } }>({});
+  const isLocalChange = useRef(false);
 
   useImperativeHandle(ref, () => quillRef.current as ReactQuill);
 
-  const handleChange = (content: string) => {
-    onChange(content);
-  };
+  const handleChange = useCallback((content: string, _delta: any, _source: string, editor: UnprivilegedEditor) => {
+    if (!isLocalChange.current) {
+      isLocalChange.current = true;
+      onChange(content);
+      isLocalChange.current = false;
+    }
+  }, [onChange]);
 
-  const handleSelectionChange = (range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
+  const handleSelectionChange = useCallback((range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
     if (isEditorFocused && range) {
       onCursorPositionChange({ index: range.index, length: range.length });
     } else {
       onCursorPositionChange(null);
     }
-  };
+  }, [isEditorFocused, onCursorPositionChange]);
 
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
     if (!quill) return;
 
-    const handleFocus = () => {
-      setIsEditorFocused(true);
-    };
-
-    const handleBlur = () => {
-      setIsEditorFocused(false);
-    };
+    const handleFocus = () => setIsEditorFocused(true);
+    const handleBlur = () => setIsEditorFocused(false);
 
     quill.root.addEventListener('focus', handleFocus);
     quill.root.addEventListener('blur', handleBlur);
@@ -145,7 +149,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
 
     const updateCursorOverlays = () => {
       cursorPositions.forEach(({ email, index, length }) => {
-        if (email === quill.root.getAttribute('data-user-email')) return; // Skip own cursor
+        if (email === quill.root.getAttribute('data-user-email')) return;
 
         let cursorElements = cursorOverlaysRef.current[email];
         if (!cursorElements) {
@@ -172,12 +176,10 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
         cursorElements.marker.style.top = `${bounds.top}px`;
         cursorElements.marker.style.height = `${bounds.height}px`;
 
-        // Clear previous timer
         if (cursorElements.timer) {
           clearTimeout(cursorElements.timer);
         }
 
-        // Hide email after 2 seconds of inactivity
         cursorElements.timer = setTimeout(() => {
           cursorElements.overlay.classList.remove('show');
         }, 2000);
@@ -199,6 +201,20 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({ value, onChange,
       cursorOverlaysRef.current = {};
     };
   }, [cursorPositions]);
+
+  useEffect(() => {
+    const quill = quillRef.current?.getEditor();
+    if (!quill || isLocalChange.current) return;
+
+    const currentContent = quill.root.innerHTML;
+    if (currentContent !== value) {
+      const selection = quill.getSelection();
+      quill.setContents(quill.clipboard.convert(value));
+      if (selection) {
+        quill.setSelection(selection);
+      }
+    }
+  }, [value]);
 
   return (
     <ReactQuill
