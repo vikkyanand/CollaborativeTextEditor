@@ -16,6 +16,7 @@ const useWebSocket = (
   const [isCleaningUp, setIsCleaningUp] = useState(false);
   const { email } = useAuth();
 
+  // Cleanup previous WebSocket connection if it exists
   const cleanupPreviousConnection = async () => {
     if (connectionRef.current) {
       logger.log('Cleaning up previous connection for document ID:', documentId);
@@ -35,6 +36,7 @@ const useWebSocket = (
     }
   };
 
+  // Start a new WebSocket connection
   const startConnection = async () => {
     if (isCleaningUp) {
       logger.log('Currently cleaning up, skipping start.');
@@ -53,6 +55,7 @@ const useWebSocket = (
 
       connectionRef.current = connection;
 
+      // Event listeners for various WebSocket messages
       connection.on('ReceiveDocumentUpdate', (updatedContent: string) => {
         logger.log('Received document update:', updatedContent);
         onUpdate(updatedContent);
@@ -85,6 +88,7 @@ const useWebSocket = (
         await cleanupPreviousConnection();
       });
 
+      // Start the WebSocket connection and join the document group
       await connection.start();
       logger.log('WebSocket connected to', url);
       await connection.invoke('JoinDocumentGroup', documentId, email);
@@ -93,6 +97,7 @@ const useWebSocket = (
     }
   };
 
+  // Effect to manage connection lifecycle
   useEffect(() => {
     if (!documentId) return;
 

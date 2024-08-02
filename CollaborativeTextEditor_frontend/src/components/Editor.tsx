@@ -57,6 +57,7 @@ const Editor: React.FC<EditorProps> = ({
   email,
   preview = false,
 }) => {
+  // State variables
   const [content, setContent] = useState('');
   const [documentName, setDocumentName] = useState('');
   const [permissions, setPermissions] = useState<{ email: string; canWrite: boolean }[]>([]);
@@ -78,6 +79,7 @@ const Editor: React.FC<EditorProps> = ({
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
+  // Handlers for permission revoked and document deleted events
   const handlePermissionRevoked = () => {
     setDialogOpen(true);
   };
@@ -101,6 +103,7 @@ const Editor: React.FC<EditorProps> = ({
     throw new Error('REACT_APP_WEBSOCKET_URL is not defined in the .env file');
   }
 
+  // WebSocket connection
   const connectionRef = useWebSocket(
     websocketUrl,
     validDocumentId,
@@ -118,6 +121,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   );
 
+  // Fetch document content and permissions on mount
   useEffect(() => {
     if (currentDocumentId) {
       (async () => {
@@ -137,6 +141,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   }, [currentDocumentId, preview]);
 
+  // Save document handler
   const handleSave = useCallback(async () => {
     if (!canWrite) {
       logger.warn('User does not have permission to edit this document.');
@@ -171,6 +176,7 @@ const Editor: React.FC<EditorProps> = ({
       }
     }
 
+    // Send document update via WebSocket if connected
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       logger.log('Sending document update via WebSocket');
       connectionRef.current
@@ -179,6 +185,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   }, [canWrite, content, currentDocumentId, documentName, connectionRef, validDocumentId]);
 
+  // Keydown event listener for saving document using Ctrl+S
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 's') {
@@ -193,8 +200,10 @@ const Editor: React.FC<EditorProps> = ({
     };
   }, [handleSave]);
 
+  // Helper function to decode email
   const decodeEmail = (encodedEmail: string) => encodedEmail.replace(/__/g, '.');
 
+  // Handle content change with debounce
   const handleContentChange = useDebounce((newContent: string) => {
     console.log('Content changed:', newContent);
     setContent(newContent);
@@ -205,6 +214,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   }, 2000);
 
+  // Handle cursor position change with debounce
   const handleCursorPositionChange = useDebounce((range: { index: number; length: number } | null) => {
     if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
       if (range) {
@@ -219,6 +229,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   }, 2000);
 
+  // Cleanup WebSocket connection on component unmount
   useEffect(() => {
     return () => {
       if (connectionRef.current && connectionRef.current.state === signalR.HubConnectionState.Connected) {
@@ -229,6 +240,7 @@ const Editor: React.FC<EditorProps> = ({
     };
   }, [validDocumentId]);
 
+  // Handle sharing document link
   const handleShare = () => {
     const shareLink = `${window.location.origin}/editor/${currentDocumentId}`;
 
@@ -262,6 +274,7 @@ const Editor: React.FC<EditorProps> = ({
     }
   };
 
+  // Handle permission change notifications
   const handlePermissionChange = (email: string, canWrite: boolean, action: 'granted' | 'revoked') => {
     const actionText = action === 'granted' ? 'granted to' : 'revoked from';
     const permissionType = canWrite ? 'Write' : 'Read';
@@ -281,7 +294,7 @@ const Editor: React.FC<EditorProps> = ({
       }}
     >
       {!preview && (
-        <Box mt={7} mb={2}> {/* Increased top margin to avoid overlap with back button */}
+        <Box mt={7} mb={2}>
           <Grid container spacing={1} justifyContent="flex-end">
             {canWrite && (
               <Grid item xs={12} sm={6} md={3}>

@@ -52,6 +52,7 @@ class CustomModule {
 
 Quill.register('modules/customModule', CustomModule);
 
+// Configuration for Quill modules and formats
 const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -110,8 +111,10 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
   const isLocalChange = useRef(false);
   const latestContentRef = useRef(value);
 
+  // Expose the Quill instance to the parent component
   useImperativeHandle(ref, () => quillRef.current as ReactQuill);
 
+  // Handle text change in Quill editor
   const handleChange = useCallback((content: string, _delta: any, _source: string, editor: UnprivilegedEditor) => {
     if (!isLocalChange.current) {
       isLocalChange.current = true;
@@ -121,6 +124,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
     }
   }, [onChange]);
 
+  // Handle cursor position change in Quill editor
   const handleSelectionChange = useCallback((range: Range | null, _source: string, _editor: UnprivilegedEditor) => {
     if (isEditorFocused && range) {
       onCursorPositionChange({ index: range.index, length: range.length });
@@ -129,6 +133,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
     }
   }, [isEditorFocused, onCursorPositionChange]);
 
+  // Set focus and blur event listeners on Quill editor
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
     if (!quill) return;
@@ -145,6 +150,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
     };
   }, [setIsEditorFocused]);
 
+  // Update cursor overlays for online users
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
     if (!quill) return;
@@ -204,6 +210,7 @@ const CustomQuill = forwardRef<ReactQuill, CustomQuillProps>(({
     };
   }, [cursorPositions]);
 
+  // Synchronize the editor content with external changes
   useEffect(() => {
     const quill = quillRef.current?.getEditor();
     if (!quill || isLocalChange.current) return;
