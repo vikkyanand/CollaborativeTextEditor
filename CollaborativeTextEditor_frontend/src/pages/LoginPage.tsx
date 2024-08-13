@@ -72,6 +72,16 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  // Handle key press for 'Enter'
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      if (showNameInput) {
+        handleNameSubmit();
+      } else {
+        handleEmailSubmit();
+      }
+    }
+  };
   return (
     <Container>
       <Grid container spacing={3} alignItems="center" justifyContent="center" style={{ minHeight: '100vh' }}>
@@ -86,6 +96,7 @@ const LoginPage: React.FC = () => {
                   label="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={handleKeyDown}  
                   error={!!emailError}
                   helperText={emailError}
                   margin="normal"
@@ -103,6 +114,7 @@ const LoginPage: React.FC = () => {
                   label="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  onKeyDown={handleKeyDown}  
                   margin="normal"
                 />
                 <Button variant="contained" color="primary" fullWidth onClick={handleNameSubmit}>
