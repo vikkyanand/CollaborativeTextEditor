@@ -3,136 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\signalr\\websockethub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\collaborativetexteditor.tests\\permissionscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|solutionrelative:collaborativetexteditor.tests\\permissionscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\rabbitmq\\rabbitmqconsumer.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\rabbitmq\\rabbitmqconsumer.cs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\rabbitmq\\rabbitmqpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\rabbitmq\\rabbitmqpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\supervisor\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\supervisor\\permissionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\supervisor\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\supervisor\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\collaborativetexteditor.tests\\documentscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|solutionrelative:collaborativetexteditor.tests\\documentscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\supervisor\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\supervisor\\documentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\controllers\\documentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\controllers\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\controllers\\permissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\data\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\data\\documentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\data\\permissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\data\\permissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\presentationlayer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\presentationlayer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\supervisor\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\supervisor\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\data\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\data\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\datalayer\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{419D0F4A-D4FE-4F94-A21E-296BBD0A6DFB}|DataLayer\\DataLayer.csproj|solutionrelative:datalayer\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\presentationlayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C56A1DA3-2A87-42A0-B5E6-1CDACF84AB3C}|PresentationLayer\\PresentationLayer.csproj|solutionrelative:presentationlayer\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\interfaces\\ipermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\interfaces\\ipermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\interfaces\\idocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\repository\\entities\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\repository\\entities\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\entities\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\entities\\databasesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\dtos\\userrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\dtos\\userrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\dtos\\updatecontentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\dtos\\updatecontentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\dtos\\permissionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\dtos\\permissionrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\domainlogic\\models\\dtos\\createdocumentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB4462E9-0C5D-4052-9773-4BB3E2960956}|DomainLogic\\DomainLogic.csproj|solutionrelative:domainlogic\\models\\dtos\\createdocumentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|c:\\users\\vikky\\onedrive\\desktop\\final_project\\collaborativetexteditor\\collaborativetexteditor_backend\\collaborativetexteditor.tests\\permissionservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C24F0F8D-B3F2-435D-B285-F62B0A6B0DB0}|CollaborativeTextEditor.Tests\\CollaborativeTextEditor.Tests.csproj|solutionrelative:collaborativetexteditor.tests\\permissionservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -142,403 +26,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
-              "RelativeDocumentMoniker": "PresentationLayer\\appsettings.json",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\appsettings.json",
-              "RelativeToolTip": "PresentationLayer\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-07T06:27:45.805Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RabbitMqConsumer.cs.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
-              "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
-              "RelativeToolTip": "DataLayer\\RabbitMq\\RabbitMqConsumer.cs.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAAAFEAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:12.294Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WebSocketHub.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
-              "RelativeDocumentMoniker": "DataLayer\\SignalR\\WebSocketHub.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\SignalR\\WebSocketHub.cs",
-              "RelativeToolTip": "DataLayer\\SignalR\\WebSocketHub.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAAAAAA",
+              "Title": "PermissionsControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\PermissionsControllerTests.cs",
+              "RelativeDocumentMoniker": "CollaborativeTextEditor.Tests\\PermissionsControllerTests.cs",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\PermissionsControllerTests.cs",
+              "RelativeToolTip": "CollaborativeTextEditor.Tests\\PermissionsControllerTests.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAAAB0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:28.856Z",
+              "WhenOpened": "2024-08-20T06:46:07.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "INotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\INotificationService.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\INotificationService.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\INotificationService.cs",
-              "RelativeToolTip": "DomainLogic\\Supervisor\\INotificationService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:14.501Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "DocumentService.cs",
               "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\DocumentService.cs",
               "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\DocumentService.cs",
               "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\DocumentService.cs",
               "RelativeToolTip": "DomainLogic\\Supervisor\\DocumentService.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAiwDgAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:29.865Z"
+              "WhenOpened": "2024-08-20T06:31:43.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Program.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\Program.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Program.cs",
-              "RelativeToolTip": "PresentationLayer\\Program.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAowB0AAAABAAAA",
+              "DocumentIndex": 1,
+              "Title": "DocumentsControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\DocumentsControllerTests.cs",
+              "RelativeDocumentMoniker": "CollaborativeTextEditor.Tests\\DocumentsControllerTests.cs",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\DocumentsControllerTests.cs",
+              "RelativeToolTip": "CollaborativeTextEditor.Tests\\DocumentsControllerTests.cs",
+              "ViewState": "AQIAAH0AAAAAAAAAAAA9wI0AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T06:25:36.425Z"
+              "WhenOpened": "2024-08-19T10:10:11.79Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DocumentsController.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\DocumentsController.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\DocumentsController.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\DocumentsController.cs",
-              "RelativeToolTip": "PresentationLayer\\Controllers\\DocumentsController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAowFkAAAAMAAAA",
+              "DocumentIndex": 3,
+              "Title": "PermissionServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\PermissionServiceTests.cs",
+              "RelativeDocumentMoniker": "CollaborativeTextEditor.Tests\\PermissionServiceTests.cs",
+              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\CollaborativeTextEditor.Tests\\PermissionServiceTests.cs",
+              "RelativeToolTip": "CollaborativeTextEditor.Tests\\PermissionServiceTests.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T16:58:46.467Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "PresentationLayer\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Properties\\launchSettings.json",
-              "RelativeToolTip": "PresentationLayer\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-17T13:27:42.858Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RabbitMqPublisher.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "RelativeDocumentMoniker": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "RelativeToolTip": "DataLayer\\RabbitMq\\RabbitMqPublisher.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAuwEAAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:17:00.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PermissionService.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\PermissionService.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\PermissionService.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\PermissionService.cs",
-              "RelativeToolTip": "DomainLogic\\Supervisor\\PermissionService.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAqwEYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:13:00.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PermissionsController.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\PermissionsController.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\PermissionsController.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\PermissionsController.cs",
-              "RelativeToolTip": "PresentationLayer\\Controllers\\PermissionsController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAEEAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T16:59:28.576Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DocumentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\DocumentRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Data\\DocumentRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\DocumentRepository.cs",
-              "RelativeToolTip": "DataLayer\\Data\\DocumentRepository.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAgwAgAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:32.557Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PermissionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\PermissionRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Data\\PermissionRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\PermissionRepository.cs",
-              "RelativeToolTip": "DataLayer\\Data\\PermissionRepository.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAkwF0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:10.421Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PresentationLayer",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
-              "RelativeDocumentMoniker": "PresentationLayer\\PresentationLayer.csproj",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\PresentationLayer.csproj",
-              "RelativeToolTip": "PresentationLayer\\PresentationLayer.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-17T13:27:34.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\UserService.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Supervisor\\UserService.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Supervisor\\UserService.cs",
-              "RelativeToolTip": "DomainLogic\\Supervisor\\UserService.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAYwCwAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:12:29.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MongoDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\MongoDbContext.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Data\\MongoDbContext.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\MongoDbContext.cs",
-              "RelativeToolTip": "DataLayer\\Data\\MongoDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAwCAAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:20.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\UserRepository.cs",
-              "RelativeDocumentMoniker": "DataLayer\\Data\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DataLayer\\Data\\UserRepository.cs",
-              "RelativeToolTip": "DataLayer\\Data\\UserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:16:44.718Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "PresentationLayer\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\PresentationLayer\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "PresentationLayer\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAkwDIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T16:59:05.213Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Interfaces\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:11:41.865Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IPermissionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Interfaces\\IPermissionRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:11:30.306Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "IDocumentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Interfaces\\IDocumentRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:11:19.319Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\User.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:09:47.551Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Permission.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Permission.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\Permission.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Permission.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Entities\\Permission.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAxwBcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:09:32.154Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Document.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Document.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\Document.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\Document.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Entities\\Document.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:09:14.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "DatabaseSettings.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
-              "RelativeToolTip": "DomainLogic\\Repository\\Entities\\DatabaseSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T06:32:47.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\User.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:08:40.436Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Permission.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Permission.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\Permission.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Permission.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\Entities\\Permission.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAxwBcAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:08:51.262Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Document.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Document.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\Document.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\Document.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\Entities\\Document.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:09:02.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "DatabaseSettings.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\Entities\\DatabaseSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T06:31:12.338Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "UserRequest.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UserRequest.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\UserRequest.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UserRequest.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\DTOs\\UserRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:10:24.3Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UpdateContentRequest.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\DTOs\\UpdateContentRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:10:36.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "PermissionRequest.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\DTOs\\PermissionRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-07T06:22:59.487Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "CreateDocumentRequest.cs",
-              "DocumentMoniker": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",
-              "RelativeDocumentMoniker": "DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",
-              "ToolTip": "C:\\Users\\vikky\\OneDrive\\Desktop\\final_project\\CollaborativeTextEditor\\CollaborativeTextEditor_backend\\DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",
-              "RelativeToolTip": "DomainLogic\\Models\\DTOs\\CreateDocumentRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T17:10:09.059Z"
+              "WhenOpened": "2024-08-20T05:54:09.423Z",
+              "EditorCaption": ""
             }
           ]
         }
